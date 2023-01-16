@@ -59,7 +59,9 @@ describe Application do
     end
   end
 
-
-
+  context 'POST /login' do
+    response = post('/login', email: "user@makersbnb.com", password: "CorrectPassword123")
+    expect(response.status).to eq 302 # Status 302 provides temporary access (I could be wrong)
+  end
 
 end
