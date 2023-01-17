@@ -48,9 +48,9 @@ describe Application do
     end
   end
   
-  context 'GET listing/:id' do
-    it 'displays listing ID 2s page' do
-      response = get('/listing/2')      
+  context 'GET space/:id' do
+    it 'displays space ID 2s page' do
+      response = get('/space/2')      
       expect(response.status).to eq 200
       expect(response.body).to include('Not-dodgy mattress')
       expect(response.body).to include('321 Denmark Street')
