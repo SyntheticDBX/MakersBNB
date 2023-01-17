@@ -1,3 +1,5 @@
+TRUNCATE TABLE users, spaces, bookings RESTART IDENTITY;
+
 CREATE TABLE IF NOT EXISTS users
 (
     id            SERIAL

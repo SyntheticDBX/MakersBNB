@@ -10,6 +10,36 @@
         <link rel="stylesheet" href="/style.css" >
     </head>
     <body>
-        <p>This is the homepage.</h1>
+        <header>
+            <img src="">
+            <nav>
+                <a class="nav_link" href="/about">About</a>
+                <a class="nav_link" href="/login">Login</a>
+            </nav>
+        </header>
+        <main>
+            <h1 class="title">Hash-it-out</h1>
+            <h2 class="subheading">Hash it out at our lovely studio in Central London!</h2>
+            <p class="text">123 Harley St<br>London<br>United Kingdom</p>
+            <h2 class="subheading">Sign up to MakersBnB</h2>
+            <form class="form" action="/signup" method="POST">
+                <label for="first_name">First Name</label>
+                <input id="first_name" type="text" name="first_name">
+                <br>
+                <label for="first_name">Last Name</label>
+                <input id="last_name" type="text" name="last_name">
+                <br>
+                <label for="first_name">Username</label>
+                <input id="username" type="text" name="username">
+                <br>
+                <label for="first_name">Email</label>
+                <input id="email" type="text" name="email">
+                <br>
+                <label for="password">Password</label>
+                <input id="password" type="text" name="password">
+                <br>
+                <input id="submit" type="submit" value="Sign up">
+            </form>
+        </main>
     </body>
 </html>
