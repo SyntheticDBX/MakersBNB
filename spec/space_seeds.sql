@@ -1,8 +1,28 @@
 TRUNCATE TABLE spaces RESTART IDENTITY CASCADE;
 
 
-INSERT INTO spaces ("id", "user_id", "name",  "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (1, 3, 'Cottage house', '69 Lakewood Road', 'Apt 460', 'Udon Thani', 'Thailand', '10310', 'eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo ', '2022-05-26T03:56:00Z', 80);
-INSERT INTO spaces ("id", "user_id", "name", "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (2, 4, 'Treehouse', '6 Monterey Plaza', 'PO Box 19601', 'Zruč nad Sázavou', 'Czech Republic', '285 22', 'molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque', '2022-05-15T23:17:27Z', 85);
-INSERT INTO spaces ("id", "user_id", "name", "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (3, 1, '2-bedroom flat', '6 Bonner Crossing', 'Apt 124', 'Sindangan', 'Philippines', '6305', 'etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate', '2022-05-14T06:13:24Z', 90);
-INSERT INTO spaces ("id", "user_id", "name", "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (4, 1, '1-bedroom bungalow', '7 Lien Crossing', '3rd Floor', 'Na Tan', 'Thailand', '37180', 'non velit donec diam neque vestibulum eget posuere cubilia curae donec pharetra magna non mi integer', '2022-05-07T04:26:59Z', 55);
-INSERT INTO spaces ("id", "user_id", "name", "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (5, 3, '1-bedroom flat', '38718 Sachs Way', 'Apt 862', 'Tessaoua', 'Niger', '74291', 'ut nulla sed accumsan felis ut at dolor quis odio consequat varius ac nulla sed vel enim sit amet', '2022-09-20T01:49:37Z', 60);
+INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode,
+                    space_created_date, price_per_night)
+VALUES (1, 'Allantoparmelia alpicola (Th. Fr.) Essl.',
+        'libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus  nascetur ridiculuss mus etiam',
+        3, 'Main', 'Suite 17', 'Baiquesi', 'China', 'SL6 1XA', '2019-08-17T04:23:41Z', 663.33);
+INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode,
+                    space_created_date, price_per_night)
+VALUES (2, 'Nemacladus interior (Munz) G.T. Robbins',
+        'quis lectus suspendisse potenti in eleia quis augue lunibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt',
+        2, 'Lukken', 'Room 493', 'Jilong', 'China', 'sw7 232', '2019-08-15T07:32:53Z', 780.83);
+INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode,
+                    space_created_date, price_per_night)
+VALUES (3, 'Lecidea lepidastra (Tuck.) Hasse',
+        'eu mi nulla ac enim in tempor tu mattis  donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci',
+        4, 'Riverside', 'PO Box 13828', 'Lusacan', 'Philippines', '4325', '2020-01-21T15:21:57Z', 725.82);
+INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode,
+                    space_created_date, price_per_night)
+VALUES (4, 'Carex shinnersii P. Rothr. & Reznicek',
+        'montes nascetur ridiculus mus etiam vel augue vestibd massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vu',
+        1, 'Cordelia', 'Room 1484', 'Itigi', 'Tanzania', 'tw8 3dt', '2020-01-06T07:37:12Z', 474.42);
+INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode,
+                    space_created_date, price_per_night)
+VALUES (5, 'Huperzia ×erubescens (Brack.) Holub (pro sp.)',
+        'nec condimentum neque sapien placerat ante nulla justtortor duis mattis egestas metus',
+        5, 'Porter', 'Room 1674', 'Capim Grosso', 'Brazil', '44695000', '2019-11-10T16:49:15Z', 419.74);
