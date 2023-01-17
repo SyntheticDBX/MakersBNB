@@ -49,6 +49,7 @@ class Application {
     +string username
     +string email_address
     +string password
+    +date user_created_date
 
     +date user_created
     +login()
@@ -69,7 +70,7 @@ class Application {
     +string postcode
     +float price
     +boolean booking_approved?
-    +date space_created
+    +date space_created_date
     +make_space_available(id,user_id,start_date,end_date)
 
   }
@@ -81,6 +82,7 @@ class Application {
     +int user_id 
     +int space_id
     +boolean booking_approved?
+    +date booking_date_created
   }
 ```
 # Spaces sequence Diagram
