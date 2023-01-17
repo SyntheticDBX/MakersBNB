@@ -1,4 +1,5 @@
 require 'booking_repository'
+require 'date'
 
 def reset_bookings_table
     seed_sql = File.read('spec/seeds.sql')
@@ -22,23 +23,24 @@ describe BookingRepository do
     it 'finds a booking by id' do
         repo = BookingRepository.new
         booking = repo.find(2)
-        expect(booking.space_id).to eq 4
+        expect(booking.space_id).to eq 5
         booking = repo.find(1)
-        expect(booking.start_date).to eq '2023-01-09T02:45:57Z'
+        expect(booking.booking_start_date).to eq '2023-01-09'
     end
 
     it 'creates a new booking' do
         repo = BookingRepository.new
         booking = Booking.new
-        booking.start_date = "2023-01-14T04:50:43Z"
-        booking.end_date = "2023-01-16T11:45:57Z"
+        booking.booking_start_date = "2023-01-14"
+        booking.booking_end_date = "2023-01-16"
         booking.user_id = 4
-        booking.space_id = 1
+        booking.space_id = 3
         booking.booking_approved = false
-        booking.booking_created = Datetime.now
+        booking.booking_created_date = Date.today
+        repo.create(booking)
         booking = repo.all
         expect(booking.length).to eq 6
-        expect(booking.last.end_date).to eq "2023-01-16T11:45:57Z"
+        expect(booking.last.booking_end_date).to eq "2023-01-16"
     end
 
     # it 'retrieves users encrypted password from email' do
