@@ -1,6 +1,7 @@
-TRUNCATE TABLE bookings RESTART IDENTITY CASCADE;
+
 TRUNCATE TABLE spaces RESTART IDENTITY CASCADE;
 TRUNCATE TABLE users RESTART IDENTITY CASCADE;
+TRUNCATE TABLE bookings RESTART IDENTITY CASCADE;
 DROP TABLE IF EXISTS "public"."bookings" CASCADE;
 DROP TABLE IF EXISTS "public"."spaces" CASCADE;
 DROP TABLE IF EXISTS "public"."users" CASCADE;
@@ -9,7 +10,6 @@ CREATE SEQUENCE IF NOT EXISTS spaces_id_seq;
 CREATE SEQUENCE IF NOT EXISTS bookings_id_seq;
 CREATE TABLE IF NOT EXISTS public.users
 (
-
     id                SERIAL PRIMARY KEY,
     first_name        VARCHAR(30),
     last_name         VARCHAR(30),
@@ -69,10 +69,7 @@ VALUES (4, 'Britt', 'Burras', 'bburras3', 'bburras3@house.gov', '5Gg6Hml', '2022
 INSERT INTO users (id, first_name, last_name, username, email_address, password, user_created_date)
 VALUES (5, 'Gunar', 'Galilee', 'ggalilee4', 'ggalilee4@chronoengine.com', 'xvx8vwOUw', '2022-09-18T15:41:04Z');
 
-
-
-INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode,
-                    space_created_date, price_per_night)
+INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode, space_created_date, price_per_night)
 VALUES (1, 'Allantoparmelia alpicola (Th. Fr.) Essl.',
         'libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus  nascetur ridiculuss mus etiam',
         4, 'Main', 'Suite 17', 'Baiquesi', 'China', 'SL6 1XA', '2019-08-17T04:23:41Z', 663.33);
@@ -96,7 +93,7 @@ INSERT INTO spaces (id, name, description, user_id, first_line_address, second_l
 VALUES (5, 'Huperzia ×erubescens (Brack.) Holub (pro sp.)',
         'nec condimentum neque sapien placerat ante nulla justtortor duis mattis egestas metus',
         5, 'Porter', 'Room 1674', 'Capim Grosso', 'Brazil', '44695000', '2019-11-10T16:49:15Z', 419.74);
-
+        
 INSERT INTO bookings (id, user_id, space_id, booking_start_date, booking_end_date, booking_approved,
                       booking_created_date)
 VALUES (1, 3, 1, '2023-01-14T06:30:11Z', '2023-10-17T06:11:58Z', FALSE, '2021-03-21T18:58:12Z');
