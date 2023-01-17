@@ -43,12 +43,11 @@ CREATE TABLE IF NOT EXISTS public.bookings
     "booking_approved?"  BOOLEAN,
     booking_created_date DATE
 );
-
-insert into users (id, first_name, last_name, username, gender, password, user_created_date) values (1, 'Archambault', 'Hugli', 'ahugli0', 'Genderfluid', 'p1gMnF', '2022-04-22T00:48:29Z');
-insert into users (id, first_name, last_name, username, gender, password, user_created_date) values (2, 'Suzann', 'McGlade', 'smcglade1', 'Bigender', 'soMZAGgL2B2', '2022-04-08T23:17:16Z');
-insert into users (id, first_name, last_name, username, gender, password, user_created_date) values (3, 'Massimo', 'Mobius', 'mmobius2', 'Genderfluid', 'sm8uX0', '2022-05-10T15:49:13Z');
-insert into users (id, first_name, last_name, username, gender, password, user_created_date) values (4, 'Garwood', 'Mahody', 'gmahody3', 'Male', 'VTaG0GfQ', '2022-07-11T11:46:47Z');
-insert into users (id, first_name, last_name, username, gender, password, user_created_date) values (5, 'Papageno', 'Stamps', 'pstamps4', 'Male', 'PlCC7QI', '2022-05-18T13:05:55Z');
+insert into users (id, first_name, last_name, username, space_id, password, user_created_date) values (1, 'Claudina', 'Autin', 'cautin0', 2, 'vCcbaj', '2022-02-18T12:43:50Z');
+insert into users (id, first_name, last_name, username, space_id, password, user_created_date) values (2, 'Noelle', 'Conibeer', 'nconibeer1', 1, 'NYEWrYfkn3AA', '2022-07-15T09:24:14Z');
+insert into users (id, first_name, last_name, username, space_id, password, user_created_date) values (3, 'Abdel', 'Andresen', 'aandresen2', 3, 'rEq1Zb', '2022-10-10T12:54:27Z');
+insert into users (id, first_name, last_name, username, space_id, password, user_created_date) values (4, 'Lindsay', 'Housbey', 'lhousbey3', 5, 'QrIZrUIz96w', '2022-01-21T01:07:31Z');
+insert into users (id, first_name, last_name, username, space_id, password, user_created_date) values (5, 'Alane', 'Fraser', 'afraser4', 4, 'SgG7jv', '2022-04-10T10:33:06Z');
 
 insert into bookings (id, booking_start_date, booking_end_date, user_id, space_id, booking_approved?, booking_created_date) values (1, '2023-01-09T02:45:57Z', '2022-06-30T04:45:54Z', 4, 3, true, '2022-12-02T09:50:03Z');
 insert into bookings (id, booking_start_date, booking_end_date, user_id, space_id, booking_approved?, booking_created_date) values (2, '2022-12-31T22:19:41Z', '2022-12-24T15:02:55Z', 4, 5, true, '2022-09-12T11:20:20Z');
