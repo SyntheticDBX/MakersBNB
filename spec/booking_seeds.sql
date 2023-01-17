@@ -1,7 +1,17 @@
 TRUNCATE TABLE bookings RESTART IDENTITY CASCADE;
 
-INSERT INTO bookings ("id", "user_id", "space_id", "booking_start_date", "booking_end_date", "booking_approved", "booking_created_date") values (1, 4, 3, '2023-01-09T02:45:57Z', '2022-06-30T04:45:54Z', true, '2022-12-02T09:50:03Z');
-INSERT INTO bookings ("id", "user_id", "space_id", "booking_start_date", "booking_end_date", "booking_approved", "booking_created_date") values (2, 4, 5, '2022-12-31T22:19:41Z', '2022-12-24T15:02:55Z', true, '2022-09-12T11:20:20Z');
-INSERT INTO bookings ("id", "user_id", "space_id", "booking_start_date", "booking_end_date", "booking_approved", "booking_created_date") values (3, 2, 4, '2022-04-22T13:41:26Z', '2022-08-09T05:35:34Z', true, '2022-03-03T05:06:21Z');
-INSERT INTO bookings ("id", "user_id", "space_id", "booking_start_date", "booking_end_date", "booking_approved", "booking_created_date") values (4, 4, 5, '2022-11-01T03:07:05Z', '2022-09-03T14:52:17Z', true, '2022-02-07T20:41:59Z');
-INSERT INTO bookings ("id", "user_id", "space_id", "booking_start_date", "booking_end_date", "booking_approved", "booking_created_date") values (5, 4, 1, '2022-02-17T16:04:24Z', '2022-06-16T06:48:58Z', true, '2022-08-03T00:35:13Z');
+INSERT INTO bookings (user_id, space_id, booking_start_date, booking_end_date, booking_approved,
+                      booking_created_date)
+VALUES (3, 1, '2023-01-14T06:30:11Z', '2023-10-17T06:11:58Z', FALSE, '2021-03-21T18:58:12Z');
+INSERT INTO bookings (user_id, space_id, booking_start_date, booking_end_date, booking_approved,
+                      booking_created_date)
+VALUES (2, 2, '2023-05-18T04:07:48Z', '2023-09-30T01:59:43Z', TRUE, '2021-03-20T09:54:43Z');
+INSERT INTO bookings (user_id, space_id, booking_start_date, booking_end_date, booking_approved,
+                      booking_created_date)
+VALUES (4, 4, '2023-01-29T12:08:21Z', '2023-10-22T02:22:25Z', TRUE, '2021-01-30T17:27:16Z');
+INSERT INTO bookings (user_id, space_id, booking_start_date, booking_end_date, booking_approved,
+                      booking_created_date)
+VALUES (5, 3, '2023-01-15T14:09:10Z', '2023-12-19T02:19:59Z', FALSE, '2021-03-23T06:36:38Z');
+INSERT INTO bookings (user_id, space_id, booking_start_date, booking_end_date, booking_approved,
+                      booking_created_date)
+VALUES (1, 5, '2023-03-08T13:15:31Z', '2023-09-16T22:02:41Z', FALSE, '2021-03-13T23:46:45Z');
