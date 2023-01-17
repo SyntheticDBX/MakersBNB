@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS public.spaces
     user_id             INTEGER
         CONSTRAINT spaces_users_id_fk
             REFERENCES public.users,
+    name                VARCHAR(30),
     first_address_line  VARCHAR(30),
     second_address_line VARCHAR(30),
     city                VARCHAR(20),
