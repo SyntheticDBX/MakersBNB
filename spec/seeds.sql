@@ -45,11 +45,11 @@ CREATE TABLE bookings (
 
 );
 
-INSERT INTO users ("id", "first_name", "last_name", "email_address", "username", "password", "user_created_date") values (1, 'Claudina', 'Autin', 'cautin0', 'claudina@email.com', 'vCcbaj', '2022-02-18T12:43:50Z');
-INSERT INTO users ("id", "first_name", "last_name", "email_address", "username", "password", "user_created_date") values (2, 'Noelle', 'Conibeer', 'nconibeer1', 'noelle@email.com', 'NYEWrYfkn3AA', '2022-07-15T09:24:14Z');
-INSERT INTO users ("id", "first_name", "last_name", "email_address", "username", "password", "user_created_date") values (3, 'Abdel', 'Andresen', 'aandresen2', 'abdel@email.com', 'rEq1Zb', '2022-10-10T12:54:27Z');
-INSERT INTO users ("id", "first_name", "last_name", "email_address", "username", "password", "user_created_date") values (4, 'Lindsay', 'Housbey', 'lhousbey3','lindsay@email.com', 'QrIZrUIz96w', '2022-01-21T01:07:31Z');
-INSERT INTO users ("id", "first_name", "last_name", "email_address", "username", "password", "user_created_date") values (5, 'Alane', 'Fraser', 'afraser4', 'alane@email.com', 'SgG7jv', '2022-04-10T10:33:06Z');
+INSERT INTO users ("id", "first_name", "last_name", "username", "email_address", "password", "user_created_date") values (1, 'Claudina', 'Autin', 'cautin0', 'claudina@email.com', 'vCcbaj', '2022-02-18T12:43:50Z');
+INSERT INTO users ("id", "first_name", "last_name", "username", "email_address", "password", "user_created_date") values (2, 'Noelle', 'Conibeer', 'nconibeer1', 'noelle@email.com', 'NYEWrYfkn3AA', '2022-07-15T09:24:14Z');
+INSERT INTO users ("id", "first_name", "last_name", "username", "email_address", "password", "user_created_date") values (3, 'Abdel', 'Andresen', 'aandresen2', 'abdel@email.com', 'rEq1Zb', '2022-10-10T12:54:27Z');
+INSERT INTO users ("id", "first_name", "last_name", "username", "email_address", "password", "user_created_date") values (4, 'Lindsay', 'Housbey', 'lhousbey3','lindsay@email.com', 'QrIZrUIz96w', '2022-01-21T01:07:31Z');
+INSERT INTO users ("id", "first_name", "last_name", "username", "email_address", "password", "user_created_date") values (5, 'Alane', 'Fraser', 'afraser4', 'alane@email.com', 'SgG7jv', '2022-04-10T10:33:06Z');
 
 INSERT INTO spaces ("id", "user_id", "name",  "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (1, 3, 'Cottage house', '69 Lakewood Road', 'Apt 460', 'Udon Thani', 'Thailand', '10310', 'eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo ', '2022-05-26T03:56:00Z', 80);
 INSERT INTO spaces ("id", "user_id", "name", "first_line_address", "second_line_address", "city", "country", "postcode", "description", "space_created_date", "price_per_night") values (2, 4, 'Treehouse', '6 Monterey Plaza', 'PO Box 19601', 'Zruč nad Sázavou', 'Czech Republic', '285 22', 'molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna vulputate luctus cum sociis natoque', '2022-05-15T23:17:27Z', 85);
