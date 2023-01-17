@@ -17,7 +17,7 @@ RSpec.describe userRepository do
   it "returns all users" do
     repo = userRepository.new
     users = repo.all
-    expect(users.length).to eq()
+    expect(users.length).to eq(5)
     expect(users.first.id).to eq(1)
     expect(users.first.username).to eq('')
     expect(users.first.email_address).to eq()

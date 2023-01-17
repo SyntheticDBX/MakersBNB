@@ -18,6 +18,7 @@ class UserRepository
       user.user_created_date = record['user_created_date']
 
       users << user
+    end
   end 
 
   def find(id)
@@ -43,5 +44,4 @@ class UserRepository
 
     result_set = DatabaseConnection.exec_params(sql, sql_params)
   end 
-
 end 
