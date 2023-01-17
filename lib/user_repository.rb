@@ -12,13 +12,15 @@ class UserRepository
       user.id = record['id'].to_i
       user.first_name = record['first_name']
       user.last_name = record['last_name']
-      user.email_adress = record['email_address']
+      user.email_address = record['email_address']
       user.password = record['password']
       user.username = record['username']
       user.user_created_date = record['user_created_date']
 
       users << user
     end
+
+    return users
   end 
 
   def find(id)
@@ -30,17 +32,18 @@ class UserRepository
     user.id = record['id'].to_i
     user.first_name = record['first_name']
     user.last_name = record['last_name']
-    user.email_adress = record['email_address']
+    user.email_address = record['email_address']
     user.password = record['password']
     user.username = record['username']
     user.user_created_date = record['user_created_date']
+    
     return user
   end 
 
   def create(user)
     
-    sql = 'INSERT INTO users(first_name, last_name, email_address, password, username, user_created_date) VALUES($1, $2, $3, $4, $5, $6);'
-    sql_params = [user.first_name, user.last_name, user.email_address, user.password, useruser.username, user.user_created_date]
+    sql = 'INSERT INTO users (first_name, last_name, email_address, password, username, user_created_date) VALUES($1, $2, $3, $4, $5, $6);'
+    sql_params = [user.first_name, user.last_name, user.email_address, user.password, user.username, user.user_created_date]
 
     result_set = DatabaseConnection.exec_params(sql, sql_params)
   end 
