@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS public.users (
 
 );
 
-CREATE TABLE  IF NOT EXISTS public.spaces (
-    id SERIAL PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS public.spaces (
+    id serial PRIMARY KEY,
     name                varchar(30),
     first_line_address  varchar(30),
     second_line_address varchar(30),
@@ -28,7 +28,7 @@ CREATE TABLE  IF NOT EXISTS public.spaces (
 
 );
 
-CREATE TABLE  IF NOT EXISTS public.bookings (
+CREATE TABLE IF NOT EXISTS public.bookings (
     id serial PRIMARY KEY,
     booking_start_date   date,
     booking_end_date     date,
