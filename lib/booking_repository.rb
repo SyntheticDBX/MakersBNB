@@ -1,5 +1,5 @@
 require 'booking'
-
+require_relative './database_connection'
 class BookingRepository
     def all
         bookings = []
