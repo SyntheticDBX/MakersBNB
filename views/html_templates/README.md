@@ -1,5 +1,13 @@
 # Templates Guide 
 
+This folder contains HTML elements and snippets for our site, I've tried to collate the most essential elements in order to make the testing of routes(methods and paths) much easier. 
+
+None of the designs are final decisions, feel free to add in your ideas!
+
+
+## Routes Schematic
+
+https://www.figma.com/file/0D2EzzSLWZtWLqQVE631hR/Untitled?node-id=0%3A1&t=1GhIAUKQvmJWFdTA-1
 ### Proposals 
 
 - remove book button from gallery cards
@@ -12,11 +20,6 @@
 - incorporate some features for users who are hosts to view requests 
 
 
-This folder contains HTMl elements and snippets for our site, I've tried to collate the most essential html elements in order to make the testing of routes(methods and paths) much easier. 
-
-None of the designs are final decisions, feel free to add in your ideas!
-
-NB there is limited functionality for the host user with this current design, these need to be added in 
 
 ## Template
 
