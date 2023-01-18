@@ -4,7 +4,7 @@ require_relative '../lib/database_connection'
 
 def reset_space_table
     seed_sql = File.read('spec/seeds.sql')
-    connection = PG.connect({ host: '127.0.0.1', dbname: 'makers_bnb_test' })
+    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
     connection.exec(seed_sql)
 end
 
