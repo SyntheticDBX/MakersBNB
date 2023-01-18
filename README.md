@@ -16,5 +16,8 @@ rspec
 # Run the server (better to do this in a separate terminal).
 rackup
 ```
-# Seeds sql files info
+## Seeds sql files info
 The order of operations  in the seeds.sql file needs to be in that order it shouldn't be changed. This is due to the foreign keys being dependent on another.
+
+## DB Naming Schema 
+makersbnb && makersbnb_test
