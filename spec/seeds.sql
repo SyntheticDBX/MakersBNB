@@ -103,3 +103,5 @@ VALUES (4, 4, 3, '2023-01-15T14:09:10Z', '2023-12-19T02:19:59Z', FALSE, '2021-03
 INSERT INTO bookings (id, user_id, space_id, booking_start_date, booking_end_date, booking_approved,
                       booking_created_date)
 VALUES (5, 5, 5, '2023-03-08T13:15:31Z', '2023-09-16T22:02:41Z', FALSE, '2021-03-13T23:46:45Z');
+
+

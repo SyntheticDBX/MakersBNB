@@ -1,6 +1,5 @@
 TRUNCATE TABLE spaces RESTART IDENTITY CASCADE;
 
-
 INSERT INTO spaces (name, description, user_id, first_line_address, second_line_address, city, country, postcode,
                     space_created_date, price_per_night)
 VALUES ('Allantoparmelia alpicola (Th. Fr.) Essl.',
