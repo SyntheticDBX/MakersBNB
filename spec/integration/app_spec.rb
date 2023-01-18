@@ -17,7 +17,6 @@
 #   # one test suite for each set of related features),
 #   # you can duplicate this test file to create a new one.
 
-
 #   context 'GET /' do
 #     it 'displays homepage' do
 #       response = get('/')
@@ -47,7 +46,7 @@
 #       expect(response.body).to include 'Signup'
 #     end
 #   end
-  
+
 #   context 'GET space/:id' do
 #     it 'displays space ID 2s page' do
 #       response = get('/space/2')      

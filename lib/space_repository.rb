@@ -29,31 +29,30 @@ class SpaceRepository
             spaces << space
         end
 
-        return spaces
+        return spaces.to_a
     end
 
     def find(id)
         sql = "SELECT * FROM spaces WHERE id = $1"
         result_set = DatabaseConnection.exec_params(sql, [id])
+        record = result_set.to_a[0]
 
-        result_set.each do |record|
+        space = Space.new
+        space.id = record['id'].to_i
+        space.name = record['name']
+        space.description = record['description']
+        space.user_id = record['user_id'].to_i
+        space.first_line_address = record['first_line_address']
+        space.second_line_address = record['second_line_address']
+        space.city = record['city']
+        space.country = record['country']
+        space.postcode = record['postcode']
+        space.space_created_date = record['space_created_date']
+        space.price_per_night = record['price_per_night'].to_f
 
-            space = Space.new
-            space.id = record['id'].to_i
-            space.name = record['name']
-            space.description = record['description']
-            space.user_id = record['user_id'].to_i
-            space.first_line_address = record['first_line_address']
-            space.second_line_address = record['second_line_address']
-            space.city = record['city']
-            space.country = record['country']
-            space.postcode = record['postcode']
-            space.space_created_date = record['space_created_date']
-            space.price_per_night = record['price_per_night'].to_f
-            
-            return space
-        end
 
+
+        return space
     end
     
     def create(space)
