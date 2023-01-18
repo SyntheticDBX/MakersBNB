@@ -32,8 +32,8 @@ RSpec.describe SpaceRepository do
 
   context "find(id) method returns space by id" do
     repo = SpaceRepository.new
-    space_id_3 = space = repo.find(3)
-    space_id_5 = space = repo.find(5)
+    space_id_3 = repo.find(3)
+    space_id_5 = repo.find(5)
     it "returns space with id 5, name value" do
       expect(space_id_5.name).to eq "1-bedroom flat"
     end

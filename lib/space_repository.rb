@@ -35,8 +35,8 @@ class SpaceRepository
     def find(id)
         sql = "SELECT * FROM spaces WHERE id = $1"
         result_set = DatabaseConnection.exec_params(sql, [id])
+        print result_set.to_a
         record = result_set.to_a[0]
-
         space = Space.new
         space.id = record['id'].to_i
         space.name = record['name']

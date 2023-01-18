@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS public.spaces
     space_created_date  date,
     user_id             int,
     constraint fk_user foreign key (user_id)
-        references users (id)
+        references public.users (id)
         on delete cascade
 
 );
