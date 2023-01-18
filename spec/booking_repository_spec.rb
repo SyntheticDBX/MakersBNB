@@ -12,6 +12,10 @@ describe BookingRepository do
     reset_bookings_table
   end
 
+  after(:each) do
+    reset_bookings_table
+  end
+
   it 'returns all bookings' do
     repo = BookingRepository.new
     bookings = repo.all

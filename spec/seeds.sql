@@ -31,9 +31,6 @@ CREATE TABLE IF NOT EXISTS public.spaces
 
 );
 DROP TABLE IF EXISTS public.bookings CASCADE;
-INSERT INTO public.users ("first_name", "last_name", "username", "email_address", "password", "user_created_date")
-
-values ('Claudina', 'Autin', 'cautin0', 'claudina@email.com', 'vCcbaj', '2022-02-18T12:43:50Z');
 CREATE TABLE IF NOT EXISTS public.bookings
 (
     id                   serial PRIMARY KEY,
@@ -52,6 +49,8 @@ CREATE TABLE IF NOT EXISTS public.bookings
 
 );
 
+INSERT INTO public.users ("first_name", "last_name", "username", "email_address", "password", "user_created_date")
+values ('Claudina', 'Autin', 'cautin0', 'claudina@email.com', 'vCcbaj', '2022-02-18T12:43:50Z');
 INSERT INTO public.users ("first_name", "last_name", "username", "email_address", "password", "user_created_date")
 values ('Noelle', 'Conibeer', 'nconibeer1', 'noelle@email.com', 'NYEWrYfkn3AA', '2022-07-15T09:24:14Z');
 INSERT INTO public.users ("first_name", "last_name", "username", "email_address", "password", "user_created_date")
@@ -91,6 +90,7 @@ INSERT INTO public.spaces ("user_id", "name", "first_line_address", "second_line
 values (5, '1-bedroom flat', '38718 Sachs Way', 'Apt 862', 'Tessaoua', 'Niger', '74291',
         'ut nulla sed accumsan felis ut at dolor quis odio consequat varius ac nulla sed vel enim sit amet',
         '2022-09-20T01:49:37Z', 60);
+
 
 INSERT INTO public.bookings ("user_id", "space_id", "booking_start_date", "booking_end_date", "booking_approved",
                              "booking_created_date")

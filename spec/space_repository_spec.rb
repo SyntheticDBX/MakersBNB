@@ -14,6 +14,10 @@ RSpec.describe SpaceRepository do
     reset_spaces_table
   end
 
+  after(:each) do
+    reset_spaces_table
+  end
+
   context "all method" do
     repo = SpaceRepository.new
     spaces = repo.all

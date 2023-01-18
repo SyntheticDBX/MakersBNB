@@ -14,6 +14,10 @@ RSpec.describe UserRepository do
     reset_users_table
   end
 
+  after(:each) do
+    reset_users_table
+  end
+
   it "returns all users" do
     repo = UserRepository.new
     users = repo.all
