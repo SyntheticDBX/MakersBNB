@@ -1,5 +1,5 @@
-require 'space'
-require'database_connection'
+require_relative  './space'
+require_relative  './database_connection'
 # frozen_string_literal: true
 
 class SpaceRepository
