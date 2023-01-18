@@ -7,6 +7,9 @@ None of the designs are final decisions, feel free to add in your ideas!
 
 ## Routes Schematic
 
+miro invite
+https://miro.com/welcomeonboard/M3RaNGlSNkt3MmVEcldNdGJ5TzdXY3ExVHU3czFNNkdtWHFYV3RUb0NrZzJNWDVLV21HNmhaSVVJZUFpRHBMMXwzNDU4NzY0NTQyMTU2OTEyNjExfDI=?share_link_id=288116155517
+
 https://www.figma.com/file/0D2EzzSLWZtWLqQVE631hR/Untitled?node-id=0%3A1&t=1GhIAUKQvmJWFdTA-1
 ### Proposals 
 
