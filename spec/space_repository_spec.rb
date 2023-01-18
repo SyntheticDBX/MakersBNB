@@ -24,7 +24,6 @@ RSpec.describe SpaceRepository do
             expect(spaces[3].price_per_night).to eq 474.42
             expect(spaces[4].user_id).to eq 5
         end
-
         it "should return length of 5" do
             expect(spaces.length).to eq 5
         end
@@ -65,7 +64,7 @@ RSpec.describe SpaceRepository do
         repo.create(space)
         new_space = repo.find(6)
 
-        expect(new_space.user_id).to eq 6
+        expect(new_space.user_id).to eq space.user_id
         expect(new_space.city).to eq "Overyata"
         expect(new_space.postcode).to eq "617071"
         expect(new_space.space_created_date). to eq '2020-07-17'

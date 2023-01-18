@@ -20,7 +20,7 @@ class SpaceRepository
             space.country = record['country']
             space.postcode = record['postcode']
             space.space_created_date = record['space_created_date']
-            space.price_per_night = record['price_per_night'].to_i
+            space.price_per_night = record['price_per_night'].to_f
   
             spaces << space
         end
@@ -43,7 +43,7 @@ class SpaceRepository
             space.country = record['country']
             space.postcode = record['postcode']
             space.space_created_date = record['space_created_date']
-            space.price_per_night = record['price_per_night']
+            space.price_per_night = record['price_per_night'].to_f
             return space
         end
 
