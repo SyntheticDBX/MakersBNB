@@ -1,4 +1,4 @@
-require 'space'
+require_relative './space'
 # frozen_string_literal: true
 
 class SpaceRepository
@@ -8,7 +8,7 @@ class SpaceRepository
   
         spaces = []
 
-        result_set.each do |record|
+        results = result_set.each do |record|
             space = Space.new
             space.id = record['id'].to_i
             space.name = record['name']
@@ -20,17 +20,18 @@ class SpaceRepository
             space.country = record['country']
             space.postcode = record['postcode']
             space.space_created_date = record['space_created_date']
-            space.price = record['price']
+            space.price_per_night = record['price_per_night'].to_i
   
             spaces << space
         end
+        return spaces.to_a
     end
 
     def find(id)
         sql = "SELECT * FROM spaces WHERE id = $1"
         result_set = DatabaseConnection.exec_params(sql, [id])
 
-        result_set.each do |record|
+        return result_set.each do |record|
             space = Space.new
             space.id = record['id'].to_i
             space.name = record['name']
@@ -42,9 +43,17 @@ class SpaceRepository
             space.country = record['country']
             space.postcode = record['postcode']
             space.space_created_date = record['space_created_date']
-            space.price = record['price']
-
+            space.price_per_night = record['price_per_night']
             return space
         end
+
+    end
+    def create(space)
+        current_id = DatabaseConnection.exec_params("SELECT setval('spaces_id_seq', (SELECT max(id) FROM spaces));", []).to_a.first["setval"].to_i
+        next_id = current_id + 1
+        sql_params = [next_id, space.name, space.description, space.user_id, space.first_line_address, space.second_line_address, space.city, space.country, space.postcode, space.space_created_date, space.price_per_night]
+        sql_query = "INSERT INTO spaces (id, name, description, user_id, first_line_address, second_line_address, city, country, postcode, space_created_date, price_per_night) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11);"
+        result = DatabaseConnection.exec_params(sql_query, sql_params)
+        return nil
     end
 end

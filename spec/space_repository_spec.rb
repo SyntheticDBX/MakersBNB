@@ -17,9 +17,8 @@ RSpec.describe SpaceRepository do
     context "all method" do
         repo = SpaceRepository.new
         spaces = repo.all
-          
+
         it "returns all space records" do
-    
             expect(spaces[1].name).to eq "Nemacladus interior (Munz) G.T. Robbins"
             expect(spaces[2].city).to eq "Lusacan"
             expect(spaces[3].price_per_night).to eq 474.42
@@ -29,6 +28,7 @@ RSpec.describe SpaceRepository do
         it "should return length of 5" do
             expect(spaces.length).to eq 5
         end
+
     end
 
     context "find(id) method returns space by id" do
@@ -36,7 +36,6 @@ RSpec.describe SpaceRepository do
 
         it "returns space with id 5" do
             space = repo.find(5)
-
             expect(space.name).to eq "Huperzia ×erubescens (Brack.) Holub (pro sp.)"
             expect(space.postcode).to eq "44695000"
             expect(space.space_created_date).to eq "2019-11-10"
@@ -44,7 +43,6 @@ RSpec.describe SpaceRepository do
 
         it "returns space with id 3" do
             space = repo.find(3)
-
             expect(space.name).to eq "Lecidea lepidastra (Tuck.) Hasse"
             expect(space.postcode).to eq "4325"
             expect(space.space_created_date).to eq "2020-01-21"
@@ -53,7 +51,6 @@ RSpec.describe SpaceRepository do
 
     it "creates new space" do
         space = Space.new
-
         space.name = 'Hemigraphis reptans (G. Forst.) T. Anderson ex Hemsl.'
         space.description = 'Anyway you want it'
         space.user_id = 3
@@ -64,11 +61,10 @@ RSpec.describe SpaceRepository do
         space.postcode = '617071'
         space.space_created_date = '2020-07-17'
         space.price_per_night =  159.03
-
         repo = SpaceRepository.new
+        repo.create(space)
+        new_space = repo.find(6)
 
-        new_space = repo.create(space)
-        
         expect(new_space.user_id).to eq 6
         expect(new_space.city).to eq "Overyata"
         expect(new_space.postcode).to eq "617071"
