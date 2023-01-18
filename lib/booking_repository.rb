@@ -1,11 +1,12 @@
-require 'booking'
-require_relative './database_connection'
+require_relative 'database_connection'
+require_relative 'booking'
+
 class BookingRepository
     def all
         bookings = []
 
         sql = 'SELECT * FROM bookings;'
-        params = []
+     
 
         result_set = DatabaseConnection.exec_params(sql, params)
         result_set.each do |item|

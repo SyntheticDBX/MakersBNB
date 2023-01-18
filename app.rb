@@ -1,11 +1,17 @@
+
+require 'pg'
 require 'sinatra/base'
 require 'sinatra/reloader'
+
+require_relative 'lib/database_connection'
+
+require_relative 'lib/user'
 require_relative 'lib/space'
+require_relative 'lib/booking'
+
+require_relative 'lib/user_repository'
 require_relative 'lib/space_repository'
-require 'lib/user'
-require 'lib/user_repository'
-require 'lib/booking'
-require 'lib/booking_repository'
+require_relative 'lib/booking_repository'
 
 class Application < Sinatra::Base
   configure :development do
@@ -40,7 +46,7 @@ class Application < Sinatra::Base
     user.username = params[:username]
     user.user_created_date = DateTime.now
     repo.create(user)
-    return erb(:spaces)
+    return erb(:home)
   end
 
   get '/login' do
@@ -52,8 +58,7 @@ class Application < Sinatra::Base
   end
 
   get '/spaces' do
-    repo = SpaceRepository.new
-    @spaces = repo.all
+  
     return erb(:spaces)
   end
 
@@ -61,12 +66,9 @@ class Application < Sinatra::Base
     return erb(:spaces)
   end
 
-  post '/spaces/:id' do
-    
-  end
+  
 
   get '/requests' do 
     return erb(:requests)
   end
-
 end
