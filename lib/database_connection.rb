@@ -11,27 +11,33 @@ require 'rainbow/refinement'
 class DatabaseConnection
   using Rainbow
 
-  def self.connect(database_name)
+  def self.connect
     @host = '127.0.0.1'
-    @database_name = database_name
-    puts "Connecting to database `#{@database_name}`...".blue unless test_mode?
-
-    if test_mode? && !@database_name.end_with?("_test")
-      puts "Refusing to connect to the dev database in test mode.".red
-      puts "For your safety, when the tests are running this class will refuse"
-      puts "to connect to a database unless its name ends with `_test`."
-      puts "You tried to connect to the database `#{database_name}`."
-      puts "This is probably a problem with your setup."
-      exit
+    @database_name = "makersbnb"
+    if ENV['ENV'] == 'test'
+      @connection = PG.connect({ host: '127.0.0.1', dbname: "#{@database_name}_test" })
+    else
+      @connection = PG.connect({ host: '127.0.0.1', dbname: @database_name })
     end
 
-    @connection = PG.connect({ host: @host, dbname: @database_name })
+    puts "Connecting to database `#{@database_name}`...".blue unless test_mode?
+    # if test_mode? && !@database_name.end_with?("_test")
+    #   puts "Refusing to connect to the dev database in test mode.".red
+    #   puts "For your safety, when the tests are running this class will refuse"
+    #   puts "to connect to a database unless its name ends with `_test`."
+    #   puts "You tried to connect to the database `#{database_name}`."
+    #   puts "This is probably a problem with your setup."
+    #   exit
+    # end
+
+    # @connection = PG.connect({ host: @host, dbname: @database_name })
     puts "Connected to the database successfully.".green unless test_mode?
   rescue PG::Error => e
     exit_with_helpful_connection_message(e)
   end
 
   def self.exec_params(sql, params = [])
+    print sql, params
     @connection.exec_params(sql, params)
   rescue PG::Error => e
     exit_with_helpful_query_message(e, sql, params)

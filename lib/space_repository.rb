@@ -1,6 +1,6 @@
 
-require 'space'
-require 'database_connection'
+require_relative  './space'
+require_relative  './database_connection'
 
 # frozen_string_literal: true
 
@@ -37,6 +37,7 @@ class SpaceRepository
         result_set = DatabaseConnection.exec_params(sql, [id])
         print result_set.to_a
         record = result_set.to_a[0]
+        puts record
         space = Space.new
         space.id = record['id'].to_i
         space.name = record['name']
@@ -54,7 +55,7 @@ class SpaceRepository
 
         return space
     end
-    
+
     def create(space)
         # current_id = DatabaseConnection.exec_params("SELECT setval('spaces_id_seq', (SELECT max(id) FROM spaces));", []).to_a.first["setval"].to_i
         # next_id = current_id + 1
