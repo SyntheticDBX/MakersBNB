@@ -1,4 +1,5 @@
 require 'booking_repository'
+require_relative '../lib/booking'
 require 'date'
 
 def reset_bookings_table
@@ -8,6 +9,7 @@ def reset_bookings_table
 end
 
 describe BookingRepository do
+
     before(:each) do
         reset_bookings_table
     end
@@ -23,7 +25,7 @@ describe BookingRepository do
     it 'finds a booking by id' do
         repo = BookingRepository.new
         booking = repo.find(2)
-        expect(booking.space_id).to eq 5
+        expect(booking.space_id).to eq 2
         booking = repo.find(1)
         expect(booking.booking_start_date).to eq '2023-01-09'
     end

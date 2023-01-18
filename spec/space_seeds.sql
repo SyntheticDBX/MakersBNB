@@ -2,7 +2,7 @@ TRUNCATE TABLE spaces RESTART IDENTITY CASCADE;
 
 DROP TABLE IF EXISTS spaces CASCADE;
 
-CREATE TABLE IF NOT EXISTS public.spaces (
+CREATE TABLE IF NOT EXISTS spaces (
     id serial PRIMARY KEY,
     name                varchar(30),
     first_line_address  varchar(30),

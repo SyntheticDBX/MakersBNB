@@ -1,4 +1,4 @@
-require 'user'
+require_relative '../lib/user'
 require 'user_repository'
 require 'database_connection'
 

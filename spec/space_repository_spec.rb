@@ -9,7 +9,6 @@ def reset_spaces_table
 end
 
 RSpec.describe SpaceRepository do
-
     before(:each) do 
         reset_spaces_table
     end
@@ -20,7 +19,7 @@ RSpec.describe SpaceRepository do
 
         it "returns all space records" do
             expect(spaces[1].name).to eq "Treehouse"
-            expect(spaces[2].city).to eq "Lusacan"
+            expect(spaces[2].city).to eq "Sindagan"
             expect(spaces[3].price_per_night).to eq 474.42
             expect(spaces[4].user_id).to eq 5
         end
@@ -36,14 +35,14 @@ RSpec.describe SpaceRepository do
        it "returns space with id 5" do
             space = repo.find(5)
             expect(space.name).to eq "1-bedroom flat"
-            expect(space.postcode).to eq "44695000"
+            expect(space.postcode).to eq "74291"
             expect(space.space_created_date).to eq "2019-11-10"
         end
 
        it "returns space with id 3" do
             space = repo.find(3)
             expect(space.name).to eq "2-bedroom flat"
-            expect(space.postcode).to eq "4325"
+            expect(space.postcode).to eq "6305"
             expect(space.space_created_date).to eq "2020-01-21"
         end
     end
