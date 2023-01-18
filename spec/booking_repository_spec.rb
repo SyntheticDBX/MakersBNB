@@ -2,7 +2,7 @@ require 'booking_repository'
 require 'date'
 
 def reset_bookings_table
-    seed_sql = File.read('spec/seeds.sql')
+    seed_sql = File.read('spec/booking_seeds.sql')
     connection = PG.connect({host: '127.0.0.1', dbname: 'makersbnb_test'})
     connection.exec(seed_sql)
 end
@@ -16,14 +16,14 @@ describe BookingRepository do
         repo = BookingRepository.new
         bookings = repo.all
         expect(bookings.length).to eq 5
-        expect(bookings.first.user_id).to eq 4
+        expect(bookings.first.user_id).to eq 3
         expect(bookings.last.space_id).to eq 1
     end
 
     it 'finds a booking by id' do
         repo = BookingRepository.new
         booking = repo.find(2)
-        expect(booking.space_id).to eq 5
+        expect(booking.space_id).to eq 2
         booking = repo.find(1)
         expect(booking.booking_start_date).to eq '2023-01-09'
     end
