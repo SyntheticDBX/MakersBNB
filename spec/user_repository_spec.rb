@@ -2,14 +2,13 @@ require 'user'
 require 'user_repository'
 require 'database_connection'
 
+def reset_users_table
+  seed_sql = File.read('spec/user_seeds.sql')
+  connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
+  connection.exec(seed_sql)
+end
+
 RSpec.describe UserRepository do
-
-  def reset_users_table
-    seed_sql = File.read('spec/user_seeds.sql')
-    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
-    connection.exec(seed_sql)
-  end
-
 
   before(:each) do
     reset_users_table
