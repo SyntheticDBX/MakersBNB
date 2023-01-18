@@ -10,27 +10,15 @@ RSpec.describe UserRepository do
     connection.exec(seed_sql)
   end
 
-  def reset_spaces_table
-    seed_sql = File.read('spec/space_seeds.sql')
-    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
-    connection.exec(seed_sql)
-  end
-
-  def reset_bookings_table
-    seed_sql = File.read('spec/booking_seeds.sql')
-    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
-    connection.exec(seed_sql)
-  end
 
   before(:each) do
     reset_users_table
-    reset_spaces_table
-    reset_bookings_table
   end
 
   it "returns all users" do
     repo = UserRepository.new
     users = repo.all
+    
     expect(users.length).to eq(5)
     expect(users.first.id).to eq(1)
     expect(users.first.username).to eq('cautin0')
