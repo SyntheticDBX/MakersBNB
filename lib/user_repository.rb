@@ -1,5 +1,7 @@
 require_relative 'user'
 require_relative '../lib/database_connection'
+require 'bcrypt'
+
 class UserRepository
 
   def all
@@ -47,4 +49,13 @@ class UserRepository
 
     result_set = DatabaseConnection.exec_params(sql, sql_params)
   end 
+
+  def authenticate
+    sql = 'SELECT * FROM users WHERE email_address = $1;'
+    sql_params = [email_address]
+    result_set = DatabaseConnection.exec_params(sql, sql_params)
+    return unless result_set.any?
+    return unless BCrypt::Password.new(result_set[0]['password']) == password
+    User.new(result_set[0]['id'], result_set[0]['first_name'], result_set[0]['last_name'], result_set[0]['email_address'], result_set[0]['password'], result_set[0]['username'], result_set[0]['user_created_date'])
+  end
 end 
