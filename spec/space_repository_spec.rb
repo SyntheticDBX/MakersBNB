@@ -21,12 +21,12 @@ RSpec.describe SpaceRepository do
   context "all method" do
     repo = SpaceRepository.new
     spaces = repo.all
-
     it "returns all space records" do
       expect(spaces[1].name).to eq "Treehouse"
       expect(spaces[2].city).to eq "Sindangan"
       expect(spaces[3].price_per_night).to eq 55.0
       expect(spaces[4].user_id).to eq 5
+      expect(spaces[1].dates_available).to eq '2023-01-18,2023-01-19,2023-01-20,2023-01-21,2023-01-22'
     end
     it "should return length of 5" do
       expect(spaces.length).to eq 5
