@@ -14,25 +14,26 @@ class Application < Sinatra::Base
   end
 
   get '/' do
-    return erb(:index)
+    return erb(:home)
   end
+
   get '/spaces' do
     repo = SpaceRepository.new
 
     @spaces_list = repo.all
-    return erb (:spaces)
+    return erb(:spaces)
   end
 
   get '/spaces/:id' do
     repo = SpaceRepository.new
     id = params[:id]
     @space = repo.find(id)
-    @dates = @space.dates_available.split(",")
-    return erb (:space_id) 
+    @dates = @space.dates_available#.split(",")
+    return erb(:space) 
   end
 
-  get '' do
-    
+  get '/signup' do
+    return erb(:signup)
   end
 
 
