@@ -5,12 +5,12 @@ require_relative 'space'
 # frozen_string_literal: true
 
 class SpaceRepository
-        def all
+    def all
             spaces = []
 
-            sql = 'SELECT * FROM spaces;'
+            sql = 'SELECT id, name, description, user_id, first_line_address, second_line_address, city, country, postcode, space_created_date, price_per_night FROM spaces;'
             result_set = DatabaseConnection.exec_params(sql, [])
-    
+            
             
 
             result_set.each do |record|
@@ -32,7 +32,7 @@ class SpaceRepository
                 spaces << space
             end
             return spaces
-        end
+    end
 
     def find(id)
         sql = "SELECT * FROM spaces WHERE id = $1"

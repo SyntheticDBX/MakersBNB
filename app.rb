@@ -16,7 +16,22 @@ require_relative 'lib/booking_repository'
 class Application < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
+    
+    also_reload 'lib/space_repository'
     enable :sessions
+  end
+
+
+  get '/foo' do
+    session[:message] = 'Hello World!'
+    redirect to('/bar')
+  end
+
+  get '/bar' do
+    session[:message]   # => 'Hello World!'
+  end
+  get '/spaces' do
+    return erb(:spaces)
   end
 
   get '/' do
@@ -56,17 +71,6 @@ class Application < Sinatra::Base
   post '/login' do
     return erb(:spaces)
   end
-
-  get '/spaces' do
-  
-    return erb(:spaces)
-  end
-
-  post '/spaces' do
-    return erb(:spaces)
-  end
-
-  
 
   get '/requests' do 
     return erb(:requests)

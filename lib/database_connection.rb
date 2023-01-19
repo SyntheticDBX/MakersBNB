@@ -1,9 +1,3 @@
-# This class represents the connection to the database.
-# It allows you to run SQL.
-
-# It has been designed to provide helpful error messages when things go wrong.
-# As a result some syntax may be a little unfamiliar. Feel free to dig into it
-# if you like, but you don't need to and it's OK if it seems strange.
 
 require 'pg'
 require 'rainbow/refinement'

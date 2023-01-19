@@ -50,3 +50,4 @@ class UserRepository
     result_set = DatabaseConnection.exec_params(sql, sql_params)
   end 
 end 
+
