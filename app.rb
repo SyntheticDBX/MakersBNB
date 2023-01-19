@@ -12,7 +12,12 @@ class Application < Sinatra::Base
     also_reload  'lib/booking_repository'
     also_reload  'lib/space_repository'
   end
-
+  configure  do
+    register Sinatra::Reloader
+    also_reload  'lib/user_repository'
+    also_reload  'lib/booking_repository'
+    also_reload  'lib/space_repository'
+  end
   get '/' do
     return erb(:home)
   end
@@ -28,8 +33,8 @@ class Application < Sinatra::Base
     repo = SpaceRepository.new
     id = params[:id]
     @space = repo.find(id)
-    @dates = @space.dates_available#.split(",")
-    return erb(:space) 
+    @dates = @space.dates_available
+    return erb (:space_id) 
   end
 
   get '/signup' do
