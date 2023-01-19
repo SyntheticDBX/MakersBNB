@@ -1,6 +1,9 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative 'lib/space_repository'
+require_relative 'lib/booking_repository'
+
+require_relative 'lib/database_connection.rb'
 
 class Application < Sinatra::Base
   configure :development do
@@ -16,8 +19,21 @@ class Application < Sinatra::Base
   get '/spaces' do
     repo = SpaceRepository.new
 
-    @spaces_list = repo.find(2).name
-
+    @spaces_list = repo.all
     return erb (:spaces)
   end
+
+  get '/spaces/:id' do
+    repo = SpaceRepository.new
+    id = params[:id]
+    @space = repo.find(id)
+    @dates = @space.dates_available.split(",")
+    return erb (:space_id) 
+  end
+
+  get '' do
+    
+  end
+
+
 end

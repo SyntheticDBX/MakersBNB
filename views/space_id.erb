@@ -25,31 +25,24 @@
         <div class=" py-5">
           <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-              <!-- Code Block Here Per Listing -->
-              <% @spaces_list.each do |space| %>
-                
               <div class="col">
                 <div class="card shadow-sm">
                 
                   <!-- Listing img which would need to be hosted -->
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title><!-- space.name --></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title><%= @space.name %></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
                   <!-- Main card body -->
                   <div class="card-body">
-                    <p class="card-text"><%= space.name %> </p>
-                    <p class="card-text"><%= space.description %> </p>
-                    <small class="text-muted"><%= space.country %></small>
+                    <p class="card-text"><%= @space.name %> </p>
+                    <p class="card-text"><%= @space.city %> </p>
+                    <p class="card-text"><%= @space.dates_available %> </p>
+                    <small class="text-muted"><%= @space.country %></small>
                     <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <a href="/spaces/<%= space.id%>"><button type="button" class="btn btn-sm btn-outline-secondary">View<small class="text-muted"><%= space.id %></small></button></a>
-                      </div>
-                      <small class="text-muted"><%= space.price_per_night %></small>
+                      <small class="text-muted"><%= @space.price_per_night %></small>
                     </div>
                   </div>
                 </div>
               </div>
-              <% end %>
-              <!-- End block  here -->
             </div>
           </div>
         </div>
