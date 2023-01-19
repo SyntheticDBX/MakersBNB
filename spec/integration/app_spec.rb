@@ -62,7 +62,15 @@
        expect(response.body).to include('Czech Republic')
  
      end
-    end
+   end
+   context 'POST signup' do
+     it 'should signup user' do
+       response = post('/login',email:"claudina@email.com",password:"vCcbaj")
+       # response = get('/sessions',email:"claudina@email.com",password:"vCcbaj")
+       # expect(response.cookie("rack.session"))
+       expect(response.status).to eq 200
+     end
+   end
  #   context 'GET space/' do
  #     it 'displays space ID 2s page' do
  #       response = get('/spaces')

@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require_relative 'lib/space_repository'
 require_relative 'lib/booking_repository'
-
+require_relative 'lib/user_repository'
 require_relative 'lib/database_connection.rb'
 
 class Application < Sinatra::Base
@@ -12,30 +12,34 @@ class Application < Sinatra::Base
     also_reload  'lib/booking_repository'
     also_reload  'lib/space_repository'
   end
-
+  enable :sessions
   get '/' do
     return erb(:home)
   end
 
-  # get '/spaces' do
-  #   repo = SpaceRepository.new
 
-  #   @spaces_list = repo.all
+  #Sessions route
+  get '/login' do
+    return erb(:login)
+  end
+
+  post '/login' do
+    email = params[:email]
+    password = params[:password]
+    repo = UserRepository.new
+    user = repo.authenticate(email, password)
+    print user
+    if user.password == params[:password]
+      session[:user_id] = user.id
+      redirect '/spaces'
+    else
+      return erb(:login)
+    end
+  end
+  # get '/sessions/newn/new_session' do
   #   return erb(:spaces)
   # end
-
-  # get '/spaces/:id' do
-  #   repo = SpaceRepository.new
-  #   id = params[:id]
-  #   @space = repo.find(id)
-  #   @dates = @space.dates_available#.split(",")
-  #   return erb(:space) 
-  # end
-
-  # get '/signup' do
-  #   return erb(:signup)
-  # end
-
+  #Spaces
   get '/spaces' do
     repo = SpaceRepository.new
     @spaces_list = repo.all
@@ -48,28 +52,12 @@ class Application < Sinatra::Base
     @dates = @space.dates_available.split(",")
     return erb(:space)
   end
-
-  get '/sessions/new' do
-    return erb(:login)
-  end
-
-  post '/sessions' do
-    repo = UserRepository.new
-    user = repo.authenticate(params[:email], params[:password])
-    if user
-      session[:user_id] = user.id
-      redirect '/spaces'
-    else
-      return erb(:login)
-    end
-  end
-  
   
   post '/sessions/destroy' do
     session[:user_id] = nil
     redirect '/'
   end
-
+  #Users
   get '/users/new' do
     return erb(:signup)
   end
@@ -81,6 +69,7 @@ class Application < Sinatra::Base
     redirect '/spaces'
   end
 
+  #Bookings Routes
   get '/bookings/new' do
     repo = SpaceRepository.new
     @space = repo.find(params[:space_id])
