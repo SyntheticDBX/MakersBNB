@@ -39,28 +39,28 @@
       <main>
           <form class="row g-3">
             <div class="col-md-6">
-              <label for="inputEmail4" class="form-label">Name</label>
-              <input type="email" class="form-control" id="inputEmail4">
+              <label for="inputText" class="form-label">Name</label>
+              <input type="text" class="form-control" id="inputText" placeholder="Provide a name for your space" min="3" required>
             </div>
             <div class="col-md-6">
-              <label for="inputPassword4" class="form-label">Description</label>
-              <input type="password" class="form-control" id="inputPassword4">
+              <label for="inputText4" class="form-label">Description</label>
+              <input type="text" class="form-control" id="inputText4" placeholder="Briefly describe your space" min="10" required>
             </div>
             <div class="col-12">
               <label for="inputAddress" class="form-label">Address</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
             </div>
             <div class="col-12">
               <label for="inputAddress2" class="form-label">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" required>
             </div>
             <div class="col-md-6">
               <label for="inputCity" class="form-label">City</label>
-              <input type="text" class="form-control" id="inputCity">
+              <input type="text" class="form-control" id="inputCity" placeholder="City" required>
             </div>
             <div class="col-md-4">
-              <label for="inputState" class="form-label">Country</label>
-              <select id="inputState" class="form-select">
+              <label for="inputCountry" class="form-label">Country</label>
+              <select id="inputCountry" class="form-select" required>
                 <option selected>Choose...</option>
                 <option>select country</option>
                   <option value="AF">Afghanistan</option>
@@ -318,12 +318,12 @@
               </select>
             </div>
             <div class="col-md-2">
-              <label for="inputZip" class="form-label">Postcode</label>
-              <input type="text" class="form-control" id="inputZip">
+              <label for="inputPostcode" class="form-label">Postcode</label>
+              <input type="text" class="form-control" id="inputPostcode" placeholder="Postcode" required="">
             </div>
             <div class="col-md-2">
               <label for="inputPricepernight" class="form-label">Price Per Night</label>
-              <input type="text" class="form-control" id="inputPricepernight">
+              <input type="number" class="form-control" id="inputPricepernight" placeholder="Enter Price" min=20 required>
             </div>
             <div>
             <br>
@@ -331,13 +331,13 @@
 
             <input type="date" id="start" name="hosting-start"
                   value="2023-01-20"
-                  min="2023-01-01" max="2023-12-31">
+                  min="2023-01-01" max="2023-12-31" required>
 
                    <label for="end">End date:</label>
 
                   <input type="date" id="end" name="hosting-end"
                   value="2023-01-20"
-                  min="2023-01-01" max="2023-12-31">
+                  min="2023-01-01" max="2023-12-31" required>
             
             <div class="col-12">
             <br>

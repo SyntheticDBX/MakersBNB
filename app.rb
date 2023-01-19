@@ -39,13 +39,18 @@ class Application < Sinatra::Base
     return erb(:space) 
   end
 
-  get '/signup' do
-    return erb(:signup)
-  end
+ 
 
   get '/requests' do 
     return erb(:requests)
   end
 
+  get '/login' do
+    return erb(:login)
+  end
+
+  get '/signup' do
+    return erb(:signup)
+  end
 
 end
