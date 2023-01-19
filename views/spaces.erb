@@ -14,7 +14,7 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li><a href="/"><img src="<%=ENV["public_folder_cdn"]%>makers%20bnb-1.png" height=112px width=112px alt=""></a></li>
         </ul>
-        <div class="col-md-3 text-end"><a href="/"><button type="button" class="btn btn-outline-dark me-2">Requests</button></a>
+        <div class="col-md-3 text-end"><a href="/"><button type="button" class="btn btn-outline-dark me-2">Home</button></a>
           <button type="button" class="btn btn-outline-danger me-2">Log out</button>
         </div>
       </header>
@@ -32,18 +32,19 @@
                 <div class="card shadow-sm">
                 
                   <!-- Listing img which would need to be hosted -->
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title><!-- space.name --></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title><!-- space.name --></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"><%= space.name %></text></svg>
 
                   <!-- Main card body -->
                   <div class="card-body">
                     <p class="card-text"><%= space.name %> </p>
                     <p class="card-text"><%= space.description %> </p>
-                    <small class="text-muted"><%= space.country %></small>
+                    <small class="text-muted"><%= space.city %>, <%= space.country %></small>
+                    <hr>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <a href="/spaces/<%= space.id%>"><button type="button" class="btn btn-sm btn-outline-secondary">View<small class="text-muted"><%= space.id %></small></button></a>
+                        <a href="/spaces/<%= space.id%>"><button type="button" class="btn btn-sm btn-secondary">Book<small class="text-muted"></small></button></a>
                       </div>
-                      <small class="text-muted"><%= space.price_per_night %></small>
+                      <small class="text-muted">£ <%= space.price_per_night %> per night</small>
                     </div>
                   </div>
                 </div>

@@ -19,13 +19,14 @@ class Application < Sinatra::Base
     also_reload  'lib/space_repository'
   end
   get '/' do
-    return erb(:index)
+    return erb(:home)
   end
+
   get '/spaces' do
     repo = SpaceRepository.new
 
     @spaces_list = repo.all
-    return erb (:spaces)
+    return erb(:spaces)
   end
 
   get '/spaces/:id' do
@@ -36,8 +37,8 @@ class Application < Sinatra::Base
     return erb (:space_id) 
   end
 
-  get '' do
-    
+  get '/signup' do
+    return erb(:signup)
   end
 
 
