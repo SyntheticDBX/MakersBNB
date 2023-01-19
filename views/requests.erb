@@ -141,15 +141,21 @@
             tabindex="0"
           >
             <br>
-              <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action dark" aria-current="true">
-                  Received Requests
-                </a>
-                <!-- each booking req received per user id full list-->
-                <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-                <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-                <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
-              </div>
+
+                <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                  <div class="card-header">Request</div>
+                  <div class="card-body">
+                    <h5 class="card-title">Booking ID</h5>
+                    <p class="card-text">Booking info</p>
+                  </div>
+                   <div class="card-footer">
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-success">Approve <i class="bi bi-calendar-check"></i></button>
+                        <button type="button" class="btn btn-danger">Deny <i class="bi bi-calendar-x-fill"></i></button>
+                      </div>
+                    </div>
+                </div>
+              
           </div>
         </div>
       </div>
