@@ -17,6 +17,14 @@ class Application < Sinatra::Base
     return erb(:home)
   end
 
+   get '/template' do
+    return erb(:template)
+  end
+
+   get '/spaces/new' do
+    return erb(:new_listing)
+  end
+
   get '/spaces' do
     repo = SpaceRepository.new
 
