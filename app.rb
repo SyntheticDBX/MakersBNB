@@ -33,8 +33,8 @@ class Application < Sinatra::Base
     repo = SpaceRepository.new
     id = params[:id]
     @space = repo.find(id)
-    @dates = @space.dates_available
-    return erb (:space_id) 
+    @dates = @space.dates_available.split(",")
+    return erb (:space) 
   end
 
   get '/signup' do
