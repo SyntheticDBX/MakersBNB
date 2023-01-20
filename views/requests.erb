@@ -1,131 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <title>Makers BnB - Requests</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
+            crossorigin="anonymous"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            rel="stylesheet"
     />
-  </head>
-  <body>
-    <div class="container">
-      <!-- This Is the header don't change it -->
-      <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
-      >
+</head>
+<body>
+<div class="container">
+    <!-- This Is the header don't change it -->
+    <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+    >
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li>
-            <a href="/"
-              ><img src="<%=ENV["public_folder_cdn"]%>makers%20bnb-1.png" height="112px" width="112px" alt=""
-            /></a>
-          </li>
+            <li>
+                <a href="/"
+                ><img public_folder_cdn src="<%=ENV[""]%>makers%20bnb-1.png" height="112px" width="112px" alt=""
+                    /></a>
+            </li>
         </ul>
         <div class="col-md-3 text-end">
-          <a href="/"
-            ><button type="button" class="btn btn-outline-dark me-2">
-              Home
-            </button></a
-          >
-          <a href=""
-            ><button type="button" class="btn btn-outline-danger me-2">
-              Log Out
-            </button></a
-          >
+            <a href="/">
+                <button class="btn btn-outline-dark me-2" type="button">
+                    Home
+                </button>
+            </a>
+          <a href="/logout">
+            <button type="button" class="btn btn-outline-danger me-2">Log out</button>
+          </a>
         </div>
-      </header>
-    </div>
-    <main>
-      <!-- Main Container  -->
-      <div class="container py-4">
+    </header>
+</div>
+<main>
+    <!-- Main Container  -->
+    <div class="container py-4">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button
-              class="nav-link active"
-              id="nav-requests-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-requests"
-              type="button"
-              role="tab"
-              aria-controls="nav-requests"
-              aria-selected="true"
-            >
-              Requests
-            </button>
-            <button
-              class="nav-link"
-              id="nav-sent-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-sent"
-              type="button"
-              role="tab"
-              aria-controls="nav-sent"
-              aria-selected="false"
-            >
-              Sent
-            </button>
-            <button
-              class="nav-link"
-              id="nav-received-tab"
-              data-bs-toggle="tab"
-              data-bs-target="#nav-received"
-              type="button"
-              role="tab"
-              aria-controls="nav-received"
-              aria-selected="false"
-            >
-              Received
-            </button>
-          </div>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <button
+                        aria-controls="nav-requests"
+                        aria-selected="true"
+                        class="nav-link active"
+                        data-bs-target="#nav-requests"
+                        data-bs-toggle="tab"
+                        id="nav-requests-tab"
+                        role="tab"
+                        type="button"
+                >
+                    Requests
+                </button>
+                <button
+                        aria-controls="nav-sent"
+                        aria-selected="false"
+                        class="nav-link"
+                        data-bs-target="#nav-sent"
+                        data-bs-toggle="tab"
+                        id="nav-sent-tab"
+                        role="tab"
+                        type="button"
+                >
+                    Sent
+                </button>
+                <button
+                        aria-controls="nav-received"
+                        aria-selected="false"
+                        class="nav-link"
+                        data-bs-target="#nav-received"
+                        data-bs-toggle="tab"
+                        id="nav-received-tab"
+                        role="tab"
+                        type="button"
+                >
+                    Received
+                </button>
+            </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div
-            class="tab-pane fade show active"
-            id="nav-requests"
-            role="tabpanel"
-            aria-labelledby="nav-requests-tab"
-            tabindex="0"
-          >
-            Requests Home
-          </div>
-          <div
-            class="tab-pane fade"
-            id="nav-sent"
-            role="tabpanel"
-            aria-labelledby="nav-sent-tab"
-            tabindex="0"
-          >
-            Sent Requests
-          </div>
-          <div
-            class="tab-pane fade"
-            id="nav-received"
-            role="tabpanel"
-            aria-labelledby="nav-received-tab"
-            tabindex="0"
-          >
-            Received
-          </div>
+            <div
+                    aria-labelledby="nav-requests-tab"
+                    class="tab-pane fade show active"
+                    id="nav-requests"
+                    role="tabpanel"
+                    tabindex="0"
+            >
+                Requests Home
+            </div>
+            <div
+                    aria-labelledby="nav-sent-tab"
+                    class="tab-pane fade"
+                    id="nav-sent"
+                    role="tabpanel"
+                    tabindex="0"
+            >
+                Sent Requests
+            </div>
+            <div
+                    aria-labelledby="nav-received-tab"
+                    class="tab-pane fade"
+                    id="nav-received"
+                    role="tabpanel"
+                    tabindex="0"
+            >
+                Received
+            </div>
         </div>
-      </div>
-      <br />
-      <footer class="pt-3 mt-4 text-muted border-top">
+    </div>
+    <br/>
+    <footer class="pt-3 mt-4 text-muted border-top">
         &copy; 2023 Team Hash it Out
-      </footer>
-    </main>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-      crossorigin="anonymous"
-    ></script>
-    <script src="tabs.js"></script>
-  </body>
+    </footer>
+</main>
+<script
+        crossorigin="anonymous"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+></script>
+<script
+        crossorigin="anonymous"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+></script>
+<script src="tabs.js"></script>
+</body>
 </html>

@@ -4,6 +4,7 @@ require_relative 'lib/space_repository'
 require_relative 'lib/booking_repository'
 require_relative 'lib/user_repository'
 require_relative 'lib/user'
+require_relative 'lib/bookings'
 require_relative 'lib/database_connection.rb'
 
 class Application < Sinatra::Base
@@ -42,7 +43,7 @@ class Application < Sinatra::Base
   # get '/sessions/newn/new_session' do
   #   return erb(:spaces)
   # end
-  post '/sessions/destroy' do
+  get '/logout' do
     session[:user_id] = nil
     redirect '/'
   end
@@ -66,13 +67,15 @@ class Application < Sinatra::Base
     return erb(:signup)
   end
 
-  post '/signup' do
-    if invalid_request_parameters?
-      status 400
-      return ''
-    end
+  # post '/signup' do
+  #   if invalid_request_parameters?
+  #     status 400
+  #     return ''
+  #   end
+
+
     # Users
-  end
+  # end
   post '/users' do
     repo = UserRepository.new
     new_user = User.new
@@ -82,12 +85,12 @@ class Application < Sinatra::Base
     new_user.first_name = params[:first_name]
     new_user.last_name = params[:last_name]
     new_user.user_created_date = DateTime.now
-repo.create(new_user)
+    repo.create(new_user)
     user = repo.get_user_from_email(params[:email_address])
     session[:user_id] = user.id
     redirect '/spaces'
   end
-    # Bookings Routes
+  # Bookings Routes
   get '/bookings' do
     repo = SpaceRepository.new
     @space = repo.find(params[:space_id])
@@ -95,7 +98,8 @@ repo.create(new_user)
   end
   post '/bookings' do
     repo = BookingRepository.new
-    repo.create(params[:space_id], params[:date])
+    repo.create(params[:space_id])
+    #TODO Add bookings model
     redirect '/spaces'
   end
 
