@@ -33,7 +33,6 @@ class Application < Sinatra::Base
   post '/login' do
     user = User.new(params)
     user.authenticate
-
     if user
       session[:user_id] = user.id
       redirect("/spaces")
