@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Makers BnB</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -37,20 +38,29 @@
             ><button type="button" class="btn btn-dark">Sign-up</button></a
           >
         </div>
+        <a href="/booking-requests"><button class="btn btn-secondary" type="button">Bookings <i class="bi bi-calendar2-date"></i></button></a>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div>
       </header>
     </div>
     <main>
       <div class="container py-4">
         <div class>
           <div class="container-fluid">
-            <h1 class="display-4 fw-extra-light">Heading</h1>
-            <p class="col-md-8 fs-6">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Aspernatur aperiam expedita temporibus libero necessitatibus
-              voluptatum quas, delectus dolores odio? Quasi, iste quisquam
-              voluptate, repudiandae rerum quas eos magni numquam officiis
-              consectetur maiores
-            </p>
+            <h1 class="display-6 fw-extra-light">MakersBNB</h1>
+              <h5 class="fs-10 lh-lg fw-thin">Welcome to our online marketplace for short-term rentals!</h5>
+              <hr>
+              <h6 class="col-md-8 fs-10 fw-light lh-lg">We connect travelers with unique accommodations around the world. From apartments and vacation homes to treehouses and boats, our platform offers a wide variety of properties for every type of traveler. </h6>
+               
+            
           </div>
         </div>
         <br />
@@ -59,11 +69,11 @@
             <div class="h-100 p-5 text-white bg-dark rounded-3">
               <h2 class="display-6 fw-extra-light">Share Your Space</h2>
               <p>
-                Dummy text about becoming a host leading up to sign up button
+                Have a place that's too good to keep to yourself? Make someone's holiday and list your space. 
               </p>
-              <a href="/signup"
+              <a href="/spaces/new"
                 ><button class="btn btn-outline-light" type="button">
-                  Become a Host
+                  Make Space <i class="bi bi-house-add-fill"></i>
                 </button></a
               >
             </div>
@@ -71,10 +81,10 @@
           <div class="col-md-6">
             <div class="h-100 p-5 bg-light border rounded-3">
               <h2 class="display-6 fw-extra-light">Explore Spaces</h2>
-              <p>and plan your next adventure!</p>
+              <p>Join our community of hosts and guests and start planning your next adventure today!</p>
               <a href="/spaces"
-                ><button class="btn btn-outline-secondary" type="button">
-                  Browse
+                ><button class="btn btn-outline-dark" type="button">
+                  Browse <i class="bi bi-binoculars-fill"></i>
                 </button></a
               >
             </div>
@@ -85,5 +95,8 @@
         </footer>
       </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>
