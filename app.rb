@@ -12,6 +12,12 @@ class Application < Sinatra::Base
     also_reload  'lib/booking_repository'
     also_reload  'lib/space_repository'
   end
+  configure  do
+    register Sinatra::Reloader
+    also_reload  'lib/user_repository'
+    also_reload  'lib/booking_repository'
+    also_reload  'lib/space_repository'
+  end
   enable :sessions
   get '/' do
     return erb(:home)
@@ -43,7 +49,7 @@ class Application < Sinatra::Base
   get '/spaces' do
     repo = SpaceRepository.new
     @spaces_list = repo.all
-    return erb (:spaces)
+    return erb(:spaces)
   end
 
   get '/spaces/:id' do
@@ -51,8 +57,12 @@ class Application < Sinatra::Base
     @space = repo.find(params[:id])
     @dates = @space.dates_available.split(",")
     return erb(:space)
+    id = params[:id]
+    @space = repo.find(id)
+    @dates = @space.dates_available.split(",")
+    return erb (:space)
   end
-  
+
   post '/sessions/destroy' do
     session[:user_id] = nil
     redirect '/'
@@ -62,6 +72,11 @@ class Application < Sinatra::Base
     return erb(:signup)
   end
 
+  post '/signup' do
+    if invalid_request_parameters?
+      status 400
+      return ''
+    end
   post '/users' do
     repo = UserRepository.new
     user = repo.create(params[:email], params[:password])
@@ -81,6 +96,24 @@ class Application < Sinatra::Base
     repo.create(params[:space_id], params[:date])
     redirect '/spaces'
   end
+
+
+    repo = UserRepository.new
+    user = User.new
+    user.first_name = params[:first_name]
+    user.last_name =  params[:last_name]
+    user.username = params[:username]
+    user.email_address = params[:email_address]
+    user.password = params[:password]
+    user.user_created_date = DateTime.now
+    repo.create(user)
+    redirect '/spaces'
+  end
+
+  def invalid_request_parameters?
+    params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
+  end
+
 
 
 end

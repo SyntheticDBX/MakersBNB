@@ -19,9 +19,8 @@
       >
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <a href="/"
-              ><img
-                src="https://postimg.cc/2Vc17dr3"
+            <a href="/"><img
+                src="<%=ENV["public_folder_cdn"]%>makers%20bnb-1.png"
                 height="112px"
                 width="112px"
                 alt=""
@@ -62,9 +61,9 @@
              <div class="input-group">
               <select class="custom-select" id="inputGroupSelect04">
                 <option selected>Select From Available Dates...</option>
-                <option value="1"><%= @space.dates_available.split(",") %> </option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <% @dates.each do |date| %>
+                <option value="<%= date%>"><%= date%> </option>
+                <%end%>
               </select>
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button">Button</button>

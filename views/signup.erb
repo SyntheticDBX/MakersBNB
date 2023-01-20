@@ -10,33 +10,33 @@
     <div class="container">
       <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/"><img src="views/brand/round_logo.png" height=112px width=112px alt=""></a></li>
+          <li><a href="/"><img src="<%=ENV["public_folder_cdn"]%>makers%20bnb-1.png" height=112px width=112px alt=""></a></li>
         </ul>
         <div class="col-md-3 text-end"><a href="/"><button type="button" class="btn btn-outline-dark me-2">Home</button></a></div>
       </header>
     </div>
     <main>
       <div class="container py-4">
-        <div class>
+        <form action='/signup' method='POST' class>
           <div class="container-fluid">
             <div class="row">
-              <div class="col"><input type="text" class="form-control" placeholder="First name" aria-label="First name"></div>
-              <div class="col"><input type="text" class="form-control" placeholder="Last name" aria-label="Last name"></div>
+              <div class="col"><input type="text" class="form-control" placeholder="First name" aria-label="First name" name = "first_name"></div>
+              <div class="col"><input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name="last_name"></div>
             </div><br>
             <div class="row">
               <div class="col">
                 <div class="input-group">
-                  <div class="input-group-text">@</div><input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
+                  <div class="input-group-text">@</div><input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username" name="username">
                 </div>
               </div><br>
-              <div class="col"><input type="Email" class="form-control" id="inputemail" placeholder="Email"></div><br>
+              <div class="col"><input type="Email" class="form-control" id="inputemail" placeholder="Email" name="email_address"></div><br>
               <div class="row"><br>
-                <div class="col"><br><input type="password" class="form-control" id="inputPasswor8" placeholder="Password"></div><br>
+                <div class="col"><br><input type="password" class="form-control" id="inputPasswor8" placeholder="Password" name = "password"></div><br>
               </div>
             </div>
           </div>
-          <div class="col"><br><button type="button" class="btn btn-secondary">Submit</button></div>
-        </div>
+          <div class="col"><br><button type="submit" class="btn btn-secondary">Submit</button></div>
+        </form>
       </div><br>
       <footer class="pt-3 mt-4 text-muted border-top"> &copy; 2023 Team Hash it Out </footer>
       </div>

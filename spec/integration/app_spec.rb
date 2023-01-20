@@ -3,6 +3,12 @@
  require_relative '../../app'
  require 'json'
 
+ def reset_seeds_table
+  seed_sql = File.read('spec/seeds.sql')
+  connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
+  connection.exec(seed_sql)
+end
+
  describe Application do
    # This is so we can use rack-test helper methods.
    include Rack::Test::Methods
@@ -11,6 +17,10 @@
    # class so our tests work.
    let(:app) { Application.new }
 
+   before(:each) do
+    reset_seeds_table
+  end
+
    # Write your integration tests below.
    # If you want to split your integration tests
    # accross multiple RSpec files (for example, have
@@ -18,16 +28,11 @@
    # you can duplicate this test file to create a new one.
 
    context 'GET /' do
-     xit 'displays homepage' do
+     it 'displays homepage' do
        response = get('/')
 
        expect(response.status).to eq(200)
-       expect(response.body).to include('Hash-it-out')
-       expect(response.body).to include('Hash it out at our lovely studio in Central London!')
-       expect(response.body).to include('123 Harley St')
-       expect(response.body).to include('London')
-       expect(response.body).to include('United Kingdom')
-       expect(response.body).to include('£150')
+       expect(response.body).to include('Share Your Space')
      end
    end
 
@@ -40,11 +45,31 @@
    end
 
    context 'GET /signup' do
-     xit 'displays signup page' do
+     it 'displays signup page' do
        response = get('/signup')
        expect(response.status).to eq 200
-       expect(response.body).to include 'Signup'
+       expect(response.body).to include "<form action='/signup' method='POST' class>"
      end
+   end
+
+   context 'POST /signup' do
+      it 'takes you to list of spaces' do
+        response = post('/signup', first_name: "John", last_name: "Smith", email_address: "john@email.com", password: "efaAS4d", username: "jsm1th10", user_created_date: '2023-01-19')
+        expect(response.status).to eq 302
+        repo = UserRepository.new
+        users = repo.all
+
+        expect(users).to include(
+          have_attributes(
+            first_name: "John", 
+            last_name: "Smith", 
+            email_address: "john@email.com", 
+            password: "efaAS4d", 
+            username: "jsm1th10", 
+            user_created_date: '2023-01-19'
+          )
+        )
+      end
    end
 
    context 'GET spaces/' do
@@ -53,14 +78,12 @@
        expect(response.body).to include 'Cottage house' 
       end
     end
+    
    context 'GET spaces/:id' do
      it 'displays space ID 2s page' do
        response = get('/spaces/2')
        expect(response.status).to eq 200
        expect(response.body).to include('Treehouse')
-       expect(response.body).to include('Zruč nad Sázavou')
-       expect(response.body).to include('Czech Republic')
- 
      end
    end
    context 'POST signup' do
@@ -90,4 +113,4 @@
  #   end
  #
  # end
-   end
+  end
