@@ -41,7 +41,7 @@ class Application < Sinatra::Base
 
  
 
-  get '/requests' do 
+  get '/booking-requests' do 
     return erb(:requests)
   end
 
