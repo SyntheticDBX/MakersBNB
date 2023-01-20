@@ -31,7 +31,9 @@ class Application < Sinatra::Base
   end
 
   post '/login' do
-    user = User.authenticate(params[:email_address])
+    user = User.new(params)
+    user.authenticate
+
     if user
       session[:user_id] = user.id
       redirect("/spaces")
