@@ -37,7 +37,6 @@ class DatabaseConnection
   end
 
   def self.exec_params(sql, params = [])
-    print sql, params
     @connection.exec_params(sql, params)
   rescue PG::Error => e
     exit_with_helpful_query_message(e, sql, params)

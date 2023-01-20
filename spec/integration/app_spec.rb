@@ -37,10 +37,10 @@ end
    end
 
    context 'GET /login' do
-     xit 'displays login form' do
+     it 'displays login form' do
        response = get('/login')
        expect(response.status). to eq 200
-       expect(response.body).to include 'Login'
+       expect(response.body).to include 'Log In'
      end
    end
 
@@ -48,13 +48,13 @@ end
      it 'displays signup page' do
        response = get('/signup')
        expect(response.status).to eq 200
-       expect(response.body).to include "<form action='/signup' method='POST' class>"
+       expect(response.body).to include "<form action='/users' method='POST' class>"
      end
    end
 
-   context 'POST /signup' do
-      it 'takes you to list of spaces' do
-        response = post('/signup', first_name: "John", last_name: "Smith", email_address: "john@email.com", password: "efaAS4d", username: "jsm1th10", user_created_date: '2023-01-19')
+   context 'POST /users' do
+      it 'redirects to list of spaces' do
+        response = post('/users', first_name: "John", last_name: "Smith", email_address: "john@email.com", password: "efaAS4d", username: "jsm1th10", user_created_date: '2023-01-19')
         expect(response.status).to eq 302
         repo = UserRepository.new
         users = repo.all
@@ -85,7 +85,8 @@ end
        expect(response.status).to eq 200
        expect(response.body).to include('Treehouse')
      end
-    end
+   end
+
  #   context 'GET space/' do
  #     it 'displays space ID 2s page' do
  #       response = get('/spaces')

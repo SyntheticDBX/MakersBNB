@@ -3,45 +3,64 @@ require 'sinatra/reloader'
 require_relative 'lib/space_repository'
 require_relative 'lib/booking_repository'
 require_relative 'lib/user_repository'
+require_relative 'lib/user'
+require_relative 'lib/booking'
+require_relative 'lib/space'
 require_relative 'lib/database_connection.rb'
 
 class Application < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
-    also_reload  'lib/user_repository'
-    also_reload  'lib/booking_repository'
-    also_reload  'lib/space_repository'
+    also_reload 'lib/user_repository'
+    also_reload 'lib/booking_repository'
+    also_reload 'lib/space_repository'
   end
-  configure  do
+  configure do
     register Sinatra::Reloader
-    also_reload  'lib/user_repository'
-    also_reload  'lib/booking_repository'
-    also_reload  'lib/space_repository'
+    also_reload 'lib/user_repository'
+    also_reload 'lib/booking_repository'
+    also_reload 'lib/space_repository'
   end
+  enable :sessions
   get '/' do
     return erb(:home)
   end
 
-   get '/template' do
-    return erb(:template)
+  get '/login' do
+    return erb(:login)
   end
 
-   get '/spaces/new' do
-    return erb(:new_listing)
+  post '/login' do
+    user = User.new(params)
+    user.authenticate
+    if user
+      session[:user_id] = user.id
+      redirect("/spaces")
+    else
+      erb(:login)
+    end
+  end
+
+  get '/logout' do
+    session[:user_id] = nil
+    redirect '/'
   end
 
   get '/spaces' do
     repo = SpaceRepository.new
-
     @spaces_list = repo.all
     return erb(:spaces)
+  end
+
+  get '/spaces/new' do
+    return erb(:new_listing)
   end
 
   get '/spaces/:id' do
     repo = SpaceRepository.new
     id = params[:id]
     @space = repo.find(id)
-    # @dates = @space.dates_available.split(",")
+    @dates = @space.dates_available.split(",")
     return erb (:space)
   end
 
@@ -55,32 +74,45 @@ class Application < Sinatra::Base
     return erb(:login)
   end
 
+  post '/spaces' do
+    return erb (:space)
+  end
+  # Users
   get '/signup' do
     return erb(:signup)
   end
 
-  post '/signup' do
+  post '/users' do
     if invalid_request_parameters?
       status 400
       return ''
     end
 
-    repo = UserRepository.new
-    user = User.new
-    user.first_name = params[:first_name]
-    user.last_name =  params[:last_name]
-    user.username = params[:username]
-    user.email_address = params[:email_address]
-    user.password = params[:password]
-    user.user_created_date = DateTime.now
-    repo.create(user)
+     user = User.new(params)
+     user = user.signup(params)
+    session[:user_id] = user.id
+    redirect '/spaces'
+
+    def invalid_request_parameters?
+      params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
+    end
+  end
+  # Bookings Routes
+  get '/bookings' do
+    repo = BookingRepository.new
+    @bookings_list = repo.all
+    return erb(:bookings)
+  end
+
+  post '/bookings' do
+    repo = BookingRepository.new
+    repo.create(params[:space_id])
+    #TODO Add bookings model
     redirect '/spaces'
   end
 
-  def invalid_request_parameters?
-    params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
-  end
-
-
+  # def invalid_request_parameters?
+  #   params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
+  # end
 
 end
