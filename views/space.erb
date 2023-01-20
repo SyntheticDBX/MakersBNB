@@ -22,7 +22,7 @@
           <li>
             <a href="/"
               ><img
-                src="https://postimg.cc/2Vc17dr3"
+                src="<%=ENV["public_folder_cdn"]%>makers%20bnb-1.png"
                 height="112px"
                 width="112px"
                 alt=""
@@ -60,7 +60,7 @@
 
               <hr class="my-4">
               <p>Make a Booking</p>
-             <button type="button">£ <%= @space.price_per_night%> per night</button>
+             
              <div class="input-group">
               <select class="custom-select" id="inputGroupSelect04">
                 <option selected>Select From Available Dates...</option>
@@ -69,7 +69,7 @@
                 <%end%>
               </select>
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="submit">Button</button>
+                <button class="btn btn-dark" type="submit">Place Booking</button>
               </div>
             </div>
             </div>

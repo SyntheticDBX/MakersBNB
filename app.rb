@@ -41,11 +41,17 @@ class Application < Sinatra::Base
     repo = SpaceRepository.new
     id = params[:id]
     @space = repo.find(id)
-    # @dates = @space.dates_available.split(",")
+    @dates = @space.dates_available.split(",")
     return erb (:space)
   end
 
+  get '/welcome' do
+    return erb(:logged_in_home)
+  end
 
+   get '/userlogout' do
+    return erb(:logged_out_home)
+  end
 
   get '/booking-requests' do
     return erb(:requests)
