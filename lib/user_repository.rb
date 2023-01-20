@@ -9,7 +9,7 @@ class UserRepository
     result_set = DatabaseConnection.exec_params(sql, [])
     result_set.map {| user_hash | User.new(user_hash)}
   end
-
+  #
   def find(id)
     sql = 'SELECT * FROM users WHERE id = $1;'
     sql_params = [id]
