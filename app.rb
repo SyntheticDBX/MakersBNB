@@ -22,6 +22,14 @@ class Application < Sinatra::Base
     return erb(:home)
   end
 
+   get '/template' do
+    return erb(:template)
+  end
+
+   get '/spaces/new' do
+    return erb(:new_listing)
+  end
+
   get '/spaces' do
     repo = SpaceRepository.new
 
@@ -33,8 +41,18 @@ class Application < Sinatra::Base
     repo = SpaceRepository.new
     id = params[:id]
     @space = repo.find(id)
-    @dates = @space.dates_available.split(",")
-    return erb (:space) 
+    # @dates = @space.dates_available.split(",")
+    return erb (:space)
+  end
+
+
+
+  get '/booking-requests' do
+    return erb(:requests)
+  end
+
+  get '/login' do
+    return erb(:login)
   end
 
   get '/signup' do
@@ -42,7 +60,7 @@ class Application < Sinatra::Base
   end
 
   post '/signup' do
-    if invalid_request_parameters? 
+    if invalid_request_parameters?
       status 400
       return ''
     end
@@ -63,7 +81,6 @@ class Application < Sinatra::Base
     params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
   end
 
-  
+
 
 end
-
