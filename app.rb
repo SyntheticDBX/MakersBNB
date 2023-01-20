@@ -83,19 +83,18 @@ class Application < Sinatra::Base
   end
 
   post '/users' do
-    if invalid_request_parameters?
-      status 400
-      return ''
-    end
+    # if invalid_request_parameters?
+    #   status 400
+    #   return ''
+    # end
 
      user = User.new(params)
      user = user.signup(params)
     session[:user_id] = user.id
     redirect '/spaces'
-
-    def invalid_request_parameters?
-      params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
-    end
+    # def invalid_request_parameters?
+    #   params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
+    # end
   end
   # Bookings Routes
   get '/bookings' do
