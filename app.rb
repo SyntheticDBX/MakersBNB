@@ -4,7 +4,8 @@ require_relative 'lib/space_repository'
 require_relative 'lib/booking_repository'
 require_relative 'lib/user_repository'
 require_relative 'lib/user'
-require_relative 'lib/bookings'
+require_relative 'lib/booking'
+require_relative 'lib/space'
 require_relative 'lib/database_connection.rb'
 
 class Application < Sinatra::Base
@@ -62,6 +63,10 @@ class Application < Sinatra::Base
     return erb (:space)
   end
 
+  post '/spaces' do
+
+    return erb (:space)
+  end
   # Users
   get '/signup' do
     return erb(:signup)
