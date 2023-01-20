@@ -50,7 +50,7 @@ class UserRepository
     result_set = DatabaseConnection.exec_params(sql, sql_params)
   end
 
-  def authenticate(email_address, password)
+  def get_user_from_email(email_address)
     sql = 'SELECT * FROM users WHERE email_address = $1;'
     result_set = DatabaseConnection.exec_params(sql, [email_address]).to_a.first
     p result_set
