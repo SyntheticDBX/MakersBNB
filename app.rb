@@ -76,9 +76,9 @@ class Application < Sinatra::Base
   end
   # Bookings Routes
   get '/bookings' do
-    repo = SpaceRepository.new
-    @space = repo.find(params[:space_id])
-    return erb(:booking)
+    repo = BookingRepository.new
+    @bookings_list = repo.all
+    return erb(:bookings)
   end
 
   post '/bookings' do

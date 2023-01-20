@@ -13,6 +13,6 @@ class Space
 @postcode = space_hash['postcode']
 @space_created_date = space_hash['space_created_date']
 @dates_available = space_hash['dates_available']
-@price_per_night = space_hash['price_per_night'].to_f
+@price_per_night = space_hash['price_per_night'].to_i
   end
 end
