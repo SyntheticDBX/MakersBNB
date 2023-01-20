@@ -94,24 +94,10 @@
             <br>
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Sent</h5>
-                      <p class="card-text">Recent</p>
-                      <!-- each booking req sent per user id -->
-                      <a href="#" class="btn btn-dark">View All</a>
-                    </div>
-                  </div>
+                  <h4>View and Manage Requests Here</h4>
                 </div>
               <div class="col-sm-6">
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title">Received</h5>
-                    <p class="card-text">Recent</p>
-                    <!-- each booking req received per user id -->
-                    <a href="#" class="btn btn-dark">View All</a>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -124,13 +110,13 @@
           >
             <br>
                   <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-                  <div class="card-header">Request</div>
+                  <div class="card-header">Request to Host</div>
                   <div class="card-body">
-                    <h5 class="card-title">Booking ID</h5>
-                    <p class="card-text">Booking info</p>
+                    <h5 class="card-title">Booking ID: <%= @sent.booking_id %></h5>
+                    <p class="card-text">Booking info: <%= @sent.booking_start_date %>, <%= @sent.booking_end_date %></p>
                   </div>
                    <div class="card-footer">
-                      <p class="card-text-bg-success">Booking Status: Approved</p>
+                      <p class="card-text-bg-success">Approved? <%= @sent.booking_approved %></p>
                       </div>
                     </div>
                 </div>
@@ -145,15 +131,19 @@
             <br>
 
                 <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-                  <div class="card-header">Request</div>
+                  <div class="card-header">Requests from Guests</div>
                   <div class="card-body">
-                    <h5 class="card-title">Booking ID</h5>
-                    <p class="card-text">Booking info</p>
+                    <h5 class="card-title">Booking ID: <%= @received.id %></h5>
+                    <p class="card-text">Booking info: <%= @received.booking_start_date %>, <%= @received.booking_end_date %></p>
                   </div>
                    <div class="card-footer">
+                   <form>
                       <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="submit" class="btn btn-success">Approve <i class="bi bi-calendar-check"></i></button>
+                  </form>
+                  <form>
                         <button type="submit" class="btn btn-danger">Deny <i class="bi bi-calendar-x-fill"></i></button>
+                  </form>
                       </div>
                     </div>
                 </div>

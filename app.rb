@@ -64,7 +64,13 @@ class Application < Sinatra::Base
     return erb (:space)
   end
 
+  get '/welcome' do
+    return erb(:logged_in_home)
+  end
 
+   get '/userlogout' do
+    return erb(:logged_out_home)
+  end
 
   get '/booking-requests' do
     return erb(:requests)
