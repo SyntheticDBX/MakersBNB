@@ -15,10 +15,11 @@ class BookingRepository
         bookings_array.map { | booking_hash | Booking.new(booking_hash)}.first
     end
 
-    def create(booking)
+    def create(booking_hash)
+        booking = Booking.new(booking_hash)
         sql = 'INSERT INTO bookings (booking_start_date, booking_end_date, user_id, space_id, booking_approved, booking_created_date) VALUES ($1, $2, $3, $4, $5, $6)'
         params = [booking.booking_start_date, booking.booking_end_date, booking.user_id, booking.space_id,  booking.booking_approved, booking.booking_created_date  ]
-        DatabaseConnection.exec_params(sql, params)
+        DatabaseConnection.exec_params(sql, params).to_a.first
         return nil
     end
 end

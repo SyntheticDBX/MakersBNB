@@ -40,13 +40,13 @@ RSpec.describe UserRepository do
 
     repo = UserRepository.new
 
-    new_user = User.new()
-    new_user.first_name = 'Ehijie'
-    new_user.last_name = 'Aghedo'
-    new_user.username = 'ehijie98'
-    new_user.email_address = 'ehijie@email.com'
-    new_user.password = 'fGaf92s'
-    new_user.user_created_date = '2022-08-13'
+    new_user = {}
+    new_user["first_name"] = 'Ehijie'
+    new_user["last_name"] = 'Aghedo'
+    new_user["username"] = 'ehijie98'
+    new_user["email_address"] = 'ehijie@email.com'
+    new_user["password"] = 'fGaf92s'
+    new_user["user_created_date"] = '2022-08-13'
 
     repo.create(new_user)
 

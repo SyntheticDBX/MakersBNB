@@ -26,29 +26,25 @@ class Application < Sinatra::Base
     return erb(:home)
   end
 
-  # Login route
   get '/login' do
     return erb(:login)
   end
 
   post '/login' do
-    repo = UserRepository.new
-    user = repo.get_user_from_email(params[:email_address])
-    if user.password == params[:password]
+    user = User.authenticate(params[:email_address])
+    if user
       session[:user_id] = user.id
       redirect("/spaces")
     else
       erb(:login)
     end
   end
-  # get '/sessions/newn/new_session' do
-  #   return erb(:spaces)
-  # end
+
   get '/logout' do
     session[:user_id] = nil
     redirect '/'
   end
-  # Spaces
+
   get '/spaces' do
     repo = SpaceRepository.new
     @spaces_list = repo.all
@@ -64,7 +60,6 @@ class Application < Sinatra::Base
   end
 
   post '/spaces' do
-
     return erb (:space)
   end
   # Users
@@ -72,26 +67,9 @@ class Application < Sinatra::Base
     return erb(:signup)
   end
 
-  # post '/signup' do
-  #   if invalid_request_parameters?
-  #     status 400
-  #     return ''
-  #   end
-
-
-    # Users
-  # end
   post '/users' do
-    repo = UserRepository.new
-    new_user = User.new
-    new_user.email_address = params[:email_address]
-    new_user.password = params[:password]
-    new_user.username = params[:username]
-    new_user.first_name = params[:first_name]
-    new_user.last_name = params[:last_name]
-    new_user.user_created_date = DateTime.now
-    repo.create(new_user)
-    user = repo.get_user_from_email(params[:email_address])
+     user = User.new(params)
+     user = user.signup(params)
     session[:user_id] = user.id
     redirect '/spaces'
   end
@@ -101,6 +79,7 @@ class Application < Sinatra::Base
     @space = repo.find(params[:space_id])
     return erb(:booking)
   end
+
   post '/bookings' do
     repo = BookingRepository.new
     repo.create(params[:space_id])

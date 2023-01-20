@@ -1,4 +1,4 @@
-require 'booking_repository'
+require_relative '../../lib/booking_repository'
 require 'date'
 
 def reset_bookings_table
@@ -34,13 +34,13 @@ describe BookingRepository do
 
   it 'creates a new booking' do
     repo = BookingRepository.new
-    booking = Booking.new
-    booking.booking_start_date = "2023-01-14"
-    booking.booking_end_date = "2023-01-16"
-    booking.user_id = 4
-    booking.space_id = 3
-    booking.booking_approved = false
-    booking.booking_created_date = Date.today
+    booking = {}
+    booking["booking_start_date"] = "2023-01-14"
+    booking["booking_end_date"] = "2023-01-16"
+    booking["user_id"] = 4
+    booking["space_id"] = 3
+    booking["booking_approved"] = false
+    booking["booking_created_date"] = Date.today
     repo.create(booking)
     booking = repo.all
     expect(booking.length).to eq 6
