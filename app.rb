@@ -99,14 +99,48 @@ class Application < Sinatra::Base
   end
   # Bookings Routes
   get '/bookings' do
-    repo = BookingRepository.new
-    @bookings_list = repo.all
+    booking_repo = BookingRepository.new
+    space_repo = SpaceRepository.new
+    @sent = booking_repo.find_by_user_id(session[:user_id])
+    host_spaces = space_repo.find(session[:user_id])
+    @received = [ ]
+    host_spaces.each do |space|
+      space_requests = booking_repo.find_by_space_id(space.id)
+      space_requests.each do |request|
+        @received << request
+      end
+    end
     return erb(:bookings)
+  end
+
+  post '/reject' do
+    bookingid = params[:id]
+    booking_repo = BookingRepository.new
+    booking_repo.delete(:bookingId)
+  end
+
+  post '/accept' do
+    date_requested = params[:date_requested]
+    space_repo = SpaceRepository.new
+    space = space_repo.find(:id)
+    current_available = space.dates_available
+    new_available = current_available.delete(date_requested)
+    space.dates_available = new_available
+    space_repo.update(space)
+
+    booking = booking_repo.find(:id)
+    booking.booking_approved? = true
+    booking_repo.update(booking)
   end
 
   post '/bookings' do
     repo = BookingRepository.new
-    repo.create(params[:space_id])
+    
+    range = (params[:start_date])..(params[:end_date]).to_a.join(",")
+    space = Space.new
+    space.dates_available = range
+    # Other space params
+    space_repo.create(space)
     #TODO Add bookings model
     redirect '/spaces'
   end
