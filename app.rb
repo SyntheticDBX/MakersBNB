@@ -24,27 +24,32 @@ class Application < Sinatra::Base
   end
 
 
-  #Sessions route
+  #Login route
   get '/login' do
     return erb(:login)
   end
 
   post '/login' do
-    email = params[:email]
+    email = params[:email_address]
     password = params[:password]
     repo = UserRepository.new
     user = repo.authenticate(email, password)
-    print user
     if user.password == params[:password]
+      print "Password passed"
       session[:user_id] = user.id
-      redirect '/spaces'
+      redirect("/spaces")
     else
-      return erb(:login)
+      print "Password not worked"
+       erb(:login)
     end
   end
   # get '/sessions/newn/new_session' do
   #   return erb(:spaces)
   # end
+  post '/sessions/destroy' do
+    session[:user_id] = nil
+    redirect '/'
+  end
   #Spaces
   get '/spaces' do
     repo = SpaceRepository.new
@@ -54,19 +59,12 @@ class Application < Sinatra::Base
 
   get '/spaces/:id' do
     repo = SpaceRepository.new
-    @space = repo.find(params[:id])
-    @dates = @space.dates_available.split(",")
-    return erb(:space)
     id = params[:id]
     @space = repo.find(id)
     @dates = @space.dates_available.split(",")
     return erb (:space)
   end
 
-  post '/sessions/destroy' do
-    session[:user_id] = nil
-    redirect '/'
-  end
   #Users
   get '/users/new' do
     return erb(:signup)
@@ -110,9 +108,9 @@ class Application < Sinatra::Base
     redirect '/spaces'
   end
 
-  def invalid_request_parameters?
-    params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
-  end
+  # def invalid_request_parameters?
+  #   params[:first_name] == "" || params[:last_name] == "" || params[:username] == "" || params[:email_address] == "" || params[:password] == ""
+  # end
 
 
 

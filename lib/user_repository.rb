@@ -52,11 +52,11 @@ class UserRepository
 
   def authenticate(email_address, password)
     sql = 'SELECT * FROM users WHERE email_address = $1;'
-    sql_params = [email_address]
-    result_set = DatabaseConnection.exec_params(sql, sql_params).to_a.first
+    result_set = DatabaseConnection.exec_params(sql, [email_address]).to_a.first
+    p result_set
     return unless result_set.any?
     # return unless BCrypt::Password.new(result_set[0]['password']) == password
-    return unless result_set['password'] == password
+    return unless result_set['email_address'] == email_address
     new_user = User.new
     new_user.id = result_set['id']
     new_user.first_name = result_set['first_name']
